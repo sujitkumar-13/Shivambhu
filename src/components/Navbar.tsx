@@ -4,17 +4,17 @@ export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed z-50 py-4 md:py-5 top-0 inset-x-0 bg-white/90 backdrop-blur-md border-b border-slate-100/50">
-      <div className="w-full px-6 md:px-10 lg:px-20">
-        <div className="items-center flex justify-between">
+    <nav className="fixed z-50 py-3 md:py-5 top-0 inset-x-0 bg-white/95 backdrop-blur-md border-b border-slate-100/50">
+      <div className="w-full px-4 sm:px-6 md:px-10 lg:px-20">
+        <div className="items-center flex justify-between gap-4">
           {/* Navbar Logo */}
-          <a href="/" className="items-center flex hover:opacity-90 transition-all active:scale-95">
+          <a href="/" className="items-center flex hover:opacity-90 transition-all active:scale-95 shrink-0">
             <img
               alt="Shivambhu RO Water Plant Logo"
               src="https://c.animaapp.com/mmuegslhBtHcOd/assets/8e30a6ba-e31f-49ac-baf8-cee4db7c3bb4.png"
-              className="h-10 md:h-12 max-w-full"
+              className="h-8 sm:h-10 md:h-12 w-auto"
             />
-            <span className="text-slate-800 text-lg md:text-xl font-bold block leading-7 ml-2 md:ml-3">
+            <span className="text-slate-800 text-base sm:text-lg md:text-xl font-bold block leading-7 ml-2 md:ml-3">
               Shivambhu
             </span>
           </a>
@@ -47,7 +47,7 @@ export const Navbar = () => {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-slate-700 bg-slate-50 hover:bg-slate-100 flex items-center justify-center h-10 w-10 rounded-xl lg:hidden transition-colors"
+            className="text-slate-700 bg-slate-50 hover:bg-slate-100 flex items-center justify-center h-10 w-10 rounded-xl lg:hidden transition-colors shrink-0"
             aria-label="Toggle Menu"
           >
             <i className={`text-2xl ${isMenuOpen ? 'ri-close-line' : 'ri-menu-line'}`}></i>
@@ -55,8 +55,8 @@ export const Navbar = () => {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${isMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
-          <div className="border-t border-slate-100 pt-4 pb-2 flex flex-col space-y-1">
+        <div className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${isMenuOpen ? 'max-h-[500px] opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
+          <div className="border-t border-slate-100 pt-4 pb-4 flex flex-col space-y-1">
             <a
               href="#home"
               onClick={() => setIsMenuOpen(false)}
@@ -92,11 +92,11 @@ export const Navbar = () => {
             >
               Contact
             </a>
-            <div className="pt-2">
+            <div className="pt-4 px-2">
               <a
                 href="#contact"
                 onClick={() => setIsMenuOpen(false)}
-                className="w-full text-white text-sm font-semibold flex items-center justify-center bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] py-3.5 rounded-xl"
+                className="w-full text-white text-sm font-semibold flex items-center justify-center bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] py-4 rounded-xl shadow-md active:scale-[0.98] transition-transform"
               >
                 <span>Get Pure Water</span>
                 <i className="ri-arrow-right-line ml-2"></i>

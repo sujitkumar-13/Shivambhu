@@ -26,25 +26,25 @@ export const Service = () => {
 
   return (
     <section id="services" className="bg-white pb-16 md:pb-28">
-      <div className="w-full px-6 md:px-10 lg:px-20 mt-16 md:mt-24">
+      <div className="w-full px-4 sm:px-6 md:px-10 lg:px-12 xl:px-20 mt-12 sm:mt-16 md:mt-24">
         <ScrollReveal direction="up">
-          <div className="text-center mb-12 md:mb-16">
-            <span className="text-cyan-600 text-xs md:text-sm font-bold tracking-widest uppercase mb-4 block">
+          <div className="text-center mb-10 md:mb-16">
+            <span className="text-cyan-600 text-[10px] sm:text-xs md:text-sm font-bold tracking-widest uppercase mb-4 block">
               Our Services
             </span>
             <h2 className="text-slate-800 text-3xl font-bold leading-[1.2] mb-4 md:text-5xl">
               Complete Water Purification Solutions
             </h2>
-            <p className="max-w-[700px] text-slate-600 mx-auto text-base md:text-lg leading-relaxed">
+            <p className="max-w-[700px] text-slate-600 mx-auto text-sm sm:text-base md:text-lg leading-relaxed">
               From installation to maintenance, we ensure pure water reaches your home
             </p>
           </div>
         </ScrollReveal>
-        <div className="gap-6 md:gap-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="gap-6 md:gap-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
           {services.map((service, index) => (
             <ScrollReveal key={index} direction="up" delay={index * 0.1}>
-              <div className="group bg-white flex flex-col p-6 md:p-8 rounded-3xl shadow-sm border border-slate-100 hover:border-cyan-400/50 hover:shadow-[0_20px_50px_rgba(8,145,178,0.15)] transition-all duration-300 h-full cursor-pointer hover:-translate-y-1">
-                <div className="bg-cyan-50 group-hover:bg-cyan-500 items-center flex h-14 justify-center w-14 mb-6 md:mb-8 rounded-2xl md:h-16 md:w-16 transition-all duration-300">
+              <div className="group bg-white flex flex-col p-6 sm:p-7 md:p-8 rounded-3xl shadow-sm border border-slate-100 hover:border-cyan-400/50 hover:shadow-[0_20px_50px_rgba(8,145,178,0.15)] transition-all duration-300 h-full cursor-pointer hover:-translate-y-1">
+                <div className="bg-cyan-50 group-hover:bg-cyan-500 items-center flex h-14 justify-center w-14 mb-6 md:mb-8 rounded-2xl md:h-16 md:w-16 transition-all duration-300 shrink-0">
                   <i className={`${service.icon} text-cyan-500 group-hover:text-white text-2xl transition-colors duration-300`}></i>
                 </div>
                 <h3 className="text-slate-800 text-lg md:text-xl font-bold leading-7 mb-3 md:mb-4">

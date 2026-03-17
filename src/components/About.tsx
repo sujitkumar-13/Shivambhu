@@ -4,20 +4,20 @@ import { ScrollReveal } from "./ScrollReveal"
 
 export const About = () => {
   return (
-    <section id="about" className="bg-white py-16 overflow-hidden">
-      <div className="w-full px-6 md:px-10 lg:px-20">
+    <section id="about" className="bg-white py-16 overflow-hidden md:py-28">
+      <div className="w-full px-4 sm:px-6 md:px-10 lg:px-20">
         <div className="items-center flex flex-col gap-12 lg:flex-row lg:gap-24">
           {/* Left Side: Content */}
-          <div className="flex-1 order-2 lg:order-1">
+          <div className="flex-1 order-2 lg:order-1 text-center lg:text-left">
             <ScrollReveal direction="right">
-              <span className="bg-cyan-50 border border-cyan-100 text-cyan-600 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full mb-6 md:mb-8 inline-block tracking-wide uppercase">
+              <span className="bg-cyan-50 border border-cyan-100 text-cyan-600 text-[10px] sm:text-xs md:text-sm font-bold px-5 py-2.5 rounded-full mb-6 md:mb-8 inline-block tracking-wide uppercase">
                 About Shivambhu
               </span>
               <h2 className="text-slate-800 text-3xl font-bold leading-[1.2] mb-6 sm:text-4xl md:text-5xl lg:text-6xl lg:leading-[1.1]">
-                Serving Saharanpur <br />
+                Serving Saharanpur <br className="hidden sm:block" />
                 <span className="text-cyan-600 font-bold">Since Our Inception</span>
               </h2>
-              <div className="space-y-4 text-slate-600 leading-relaxed max-w-[1040px] text-sm sm:text-base md:text-lg">
+              <div className="space-y-4 text-slate-600 leading-relaxed max-w-[1040px] text-sm sm:text-base md:text-lg mx-auto lg:mx-0">
                 <p>
                   Shivambhu RO Water Plant is dedicated to bringing the purest form of water to every household in Saharanpur, Uttar Pradesh. Our state-of-the-art purification facility ensures that every drop of water meets the highest quality standards.
                 </p>
@@ -28,7 +28,7 @@ export const About = () => {
                   Our commitment to excellence has made us the trusted choice for thousands of families across Saharanpur. From residential homes to commercial establishments, we provide tailored water solutions that fit every need.
                 </p>
               </div>
-              <div className="flex justify-start">
+              <div className="flex justify-center lg:justify-start">
                 <a
                   href="#"
                   className="mt-10 items-center text-cyan-600 inline-flex font-bold gap-x-2 text-base md:text-xl hover:gap-x-4 transition-all group"
@@ -41,40 +41,40 @@ export const About = () => {
           </div>
 
           {/* Right Side: Images and Stats */}
-          <div className="flex-1 relative mt-8 lg:mt-0 order-1 lg:order-2 w-full max-w-lg mx-auto lg:max-w-none">
+          <div className="flex-1 relative mt-8 lg:mt-0 order-1 lg:order-2 w-full max-w-sm sm:max-w-lg mx-auto lg:max-w-none">
             <ScrollReveal direction="left">
-              <div className="relative">
+              <div className="relative pb-12 sm:pb-0">
                 {/* Main pipes image */}
-                <div className="relative z-10 overflow-hidden rounded-[2.5rem] shadow-[0_20px_50px_rgba(8,145,178,0.15)] group">
+                <div className="relative z-10 overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] shadow-[0_20px_50px_rgba(8,145,178,0.15)] group">
                   <img
                     alt="Pure Water"
                     src={pipes.src}
-                    className="w-full h-[350px] sm:h-[450px] md:h-[550px] lg:h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-[400px] sm:h-[550px] md:h-[650px] lg:h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-cyan-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
                 </div>
 
                 {/* Doctor Image Overlay - Responsive */}
-                <div className="absolute -top-6 -left-4 md:-top-10 md:-left-10 lg:-top-12 lg:-left-12 z-20">
+                <div className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 md:-top-10 md:-left-10 lg:-top-12 lg:-left-12 z-20">
                   <div className="relative group">
-                    <div className="absolute -inset-2 bg-cyan-100 rounded-[20px] md:rounded-[32px] blur-lg opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute -inset-2 bg-cyan-100 rounded-[16px] md:rounded-[32px] blur-lg opacity-50 group-hover:opacity-100 transition-opacity"></div>
                     <img
                       src={doctor.src}
                       alt="Quality Control"
-                      className="relative w-[100px] h-[100px] sm:w-[130px] sm:h-[130px] md:w-[180px] md:h-[180px] object-cover rounded-2xl md:rounded-[2rem] border-[4px] md:border-[8px] border-white shadow-2xl"
+                      className="relative w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[180px] md:h-[180px] object-cover rounded-xl sm:rounded-2xl md:rounded-[2rem] border-[3px] sm:border-[5px] md:border-[8px] border-white shadow-2xl"
                     />
                   </div>
                 </div>
 
                 {/* Floating Stats - Responsive placement */}
-                <div className="absolute -bottom-6 md:-bottom-10 right-0 md:-right-4 flex gap-3 md:gap-6 z-20 w-full sm:w-auto justify-end px-4 sm:px-0">
-                  <div className="bg-white/95 backdrop-blur-md shadow-2xl p-4 md:p-6 rounded-[1.5rem] flex flex-col items-center min-w-[110px] md:min-w-[150px] border border-white/50 transform hover:-translate-y-2 transition-all duration-300">
-                    <span className="text-cyan-600 text-xl md:text-3xl font-bold tracking-tight">10,000+</span>
-                    <span className="text-slate-500 text-[10px] md:text-xs font-semibold uppercase tracking-wider">Liters Daily</span>
+                <div className="absolute -bottom-10 sm:-bottom-8 right-0 sm:-right-4 flex gap-3 md:gap-6 z-20 w-full sm:w-auto justify-center sm:justify-end px-2 sm:px-0">
+                  <div className="bg-white/95 backdrop-blur-md shadow-2xl p-4 md:p-6 rounded-[1.5rem] flex flex-col items-center min-w-[100px] sm:min-w-[120px] md:min-w-[150px] border border-white/50 transform hover:-translate-y-2 transition-all duration-300">
+                    <span className="text-cyan-600 text-lg sm:text-2xl md:text-3xl font-bold tracking-tight">10,000+</span>
+                    <span className="text-slate-500 text-[8px] sm:text-[10px] md:text-xs font-semibold uppercase tracking-wider">Liters Daily</span>
                   </div>
-                  <div className="bg-white/95 backdrop-blur-md shadow-2xl p-4 md:p-6 rounded-[1.5rem] flex flex-col items-center min-w-[110px] md:min-w-[150px] border border-white/50 transform hover:-translate-y-2 transition-all duration-300">
-                    <span className="text-cyan-600 text-xl md:text-3xl font-bold tracking-tight">24/7</span>
-                    <span className="text-slate-500 text-[10px] md:text-xs font-semibold uppercase tracking-wider">Support</span>
+                  <div className="bg-white/95 backdrop-blur-md shadow-2xl p-4 md:p-6 rounded-[1.5rem] flex flex-col items-center min-w-[100px] sm:min-w-[120px] md:min-w-[150px] border border-white/50 transform hover:-translate-y-2 transition-all duration-300">
+                    <span className="text-cyan-600 text-lg sm:text-2xl md:text-3xl font-bold tracking-tight">24/7</span>
+                    <span className="text-slate-500 text-[8px] sm:text-[10px] md:text-xs font-semibold uppercase tracking-wider">Support</span>
                   </div>
                 </div>
               </div>

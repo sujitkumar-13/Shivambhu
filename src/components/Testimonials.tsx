@@ -41,53 +41,53 @@ export const Testimonials = () => {
   ];
 
   return (
-    <section id="testimonials" className="bg-slate-50 py-20 md:py-28">
-      <div className="w-full px-4 md:px-20">
+    <section id="testimonials" className="bg-slate-50 py-16 md:py-28">
+      <div className="w-full px-6 md:px-20">
         <ScrollReveal direction="up">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <div className="flex items-center justify-center gap-2 mb-4">
               <div className="w-2 h-2 rounded-full bg-cyan-500"></div>
-              <span className="text-cyan-600 text-sm font-bold tracking-widest uppercase block">
+              <span className="text-cyan-600 text-xs md:text-sm font-bold tracking-widest uppercase block">
                 Customer Reviews
               </span>
             </div>
-            <h2 className="text-slate-800 text-4xl font-bold leading-10 mb-4 md:text-6xl">
+            <h2 className="text-slate-800 text-3xl font-bold leading-[1.2] mb-4 md:text-5xl">
               What Our Customers <br />
               <span className="text-cyan-600">Say About Us</span>
             </h2>
-            <p className="text-slate-600 leading-7 text-lg">
+            <p className="text-slate-600 text-base md:text-lg leading-relaxed">
               Real experiences from families across Saharanpur
             </p>
           </div>
         </ScrollReveal>
 
-        <div className="gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="gap-6 md:gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
             <ScrollReveal key={index} direction="up" delay={index * 0.1}>
-              <div className="bg-white shadow-sm border border-slate-100 p-8 rounded-3xl h-full hover:shadow-md transition-shadow">
+              <div className="bg-white shadow-sm border border-slate-100 p-6 md:p-8 rounded-3xl h-full hover:shadow-md transition-all hover:-translate-y-1">
                 <div className="items-center flex mb-6">
                   <div className="flex text-yellow-400 gap-x-1">
-                    <i className="ri-star-fill"></i>
-                    <i className="ri-star-fill"></i>
-                    <i className="ri-star-fill"></i>
-                    <i className="ri-star-fill"></i>
-                    <i className="ri-star-fill"></i>
+                    <i className="ri-star-fill text-sm md:text-base"></i>
+                    <i className="ri-star-fill text-sm md:text-base"></i>
+                    <i className="ri-star-fill text-sm md:text-base"></i>
+                    <i className="ri-star-fill text-sm md:text-base"></i>
+                    <i className="ri-star-fill text-sm md:text-base"></i>
                   </div>
                 </div>
-                <p className="text-slate-600 leading-relaxed mb-8 italic">
+                <p className="text-slate-600 text-sm md:text-base leading-relaxed mb-8 italic">
                   "{testimonial.text}"
                 </p>
                 <div className="items-center flex mt-auto">
                   <img
                     alt={testimonial.name}
                     src={testimonial.image}
-                    className="h-12 w-12 object-cover rounded-full border-2 border-slate-50"
+                    className="h-10 w-10 md:h-12 md:w-12 object-cover rounded-full border-2 border-slate-50"
                   />
-                  <div className="ml-4">
-                    <div className="text-slate-800 font-bold">
+                  <div className="ml-3 md:ml-4">
+                    <div className="text-slate-800 font-bold text-sm md:text-base">
                       {testimonial.name}
                     </div>
-                    <div className="text-slate-500 text-sm leading-5">
+                    <div className="text-slate-500 text-xs md:text-sm leading-5">
                       {testimonial.location}
                     </div>
                   </div>

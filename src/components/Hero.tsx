@@ -68,8 +68,7 @@ export const Hero = () => {
           <div className="relative order-1 lg:order-2 w-full max-w-sm sm:max-w-lg mx-auto lg:max-w-none">
             <ScrollReveal direction="right">
               <div className="relative group p-4 sm:p-0">
-                <div className="absolute rounded-[40px] "></div>
-                <div className="relative z-10 overflow-hidden rounded-3xl shadow-[0_20px_50px_rgba(8,145,178,0.2)] transform transition-transform duration-500 hover:scale-[1.02]">
+                <div className="relative z-10 overflow-hidden rounded-3xl shadow-xl transform transition-transform duration-500 hover:scale-[1.02]">
                   <img
                     alt="Pure Water"
                     src={water.src}

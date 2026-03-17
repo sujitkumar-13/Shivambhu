@@ -5,8 +5,16 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "Shivambhu",
-  description: "Pure Water, Healthy Life - Saharanpur's Trusted Water Purification plant",
+  title: "Shivambhu | Pure RO Mineral Water Plant Saharanpur",
+  description: "Shivambhu RO Water Plant provides premium, laboratory-tested mineral water in Saharanpur. High-quality purification, doorstep delivery, and AMC services.",
+  keywords: ["RO Water", "Mineral Water", "Purified Water", "Saharanpur", "Water Delivery", "Shivambhu Water"],
+  authors: [{ name: "Shivambhu Team" }],
+  robots: "index, follow",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

@@ -25,37 +25,37 @@ export const Service = () => {
   ];
 
   return (
-    <section id="services" className="bg-white box-border caret-transparent pb-20 md:pb-28">
-      <div className="box-border caret-transparent w-full px-4 md:px-20 mt-24">
+    <section id="services" className="bg-white pb-20 md:pb-28">
+      <div className="w-full px-4 md:px-20 mt-24">
         <ScrollReveal direction="up">
           <div className="text-center mb-16">
             <span className="text-cyan-600 text-sm font-bold tracking-widest uppercase mb-4 block">
               Our Services
             </span>
-            <h2 className="text-slate-800 text-3xl font-bold box-border caret-transparent leading-10 mb-4 md:text-5xl md:leading-[1.2]">
+            <h2 className="text-slate-800 text-3xl font-bold leading-10 mb-4 md:text-5xl md:leading-[1.2]">
               Complete Water Purification Solutions
             </h2>
-            <p className="max-w-[700px] text-slate-600 mx-auto box-border caret-transparent leading-7">
+            <p className="max-w-[700px] text-slate-600 mx-auto leading-7">
               From installation to maintenance, we ensure pure water reaches your home
             </p>
           </div>
         </ScrollReveal>
-        <div className="box-border caret-transparent gap-x-8 grid grid-cols-1 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="gap-x-8 grid grid-cols-1 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
             <ScrollReveal key={index} direction="up" delay={index * 0.1}>
-              <div className="bg-white box-border caret-transparent flex flex-col p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow h-full">
-                <div className="bg-cyan-50 items-center box-border caret-transparent flex h-14 justify-center w-14 mb-8 rounded-2xl md:h-16 md:w-16">
-                  <i className={`${service.icon} text-cyan-500 text-2xl md:text-3xl`}></i>
+              <div className="group bg-white flex flex-col p-8 rounded-3xl shadow-sm border border-slate-100 hover:border-cyan-400/50 hover:shadow-[0_20px_50px_rgba(8,145,178,0.15)] transition-all duration-300 h-full cursor-pointer">
+                <div className="bg-cyan-50 group-hover:bg-cyan-500 items-center flex h-14 justify-center w-14 mb-8 rounded-2xl md:h-16 md:w-16 transition-all duration-300">
+                  <i className={`${service.icon} text-cyan-500 group-hover:text-white text-2xl md:text-3xl transition-colors duration-300`}></i>
                 </div>
-                <h3 className="text-slate-800 text-xl font-bold box-border caret-transparent leading-7 mb-4">
+                <h3 className="text-slate-800 text-xl font-bold leading-7 mb-4">
                   {service.title}
                 </h3>
-                <p className="text-slate-600 box-border caret-transparent leading-6 mb-6">
+                <p className="text-slate-600 leading-6 mb-6">
                   {service.description}
                 </p>
-                <button className="items-center text-cyan-600 box-border caret-transparent flex font-semibold gap-x-2 leading-6 hover:gap-x-3 transition-all mt-auto">
-                  <span className="box-border caret-transparent">Learn More</span>
-                  <i className="ri-arrow-right-line box-border caret-transparent"></i>
+                <button className="items-center text-cyan-600 flex font-semibold gap-x-2 leading-6 transition-all mt-auto group/btn">
+                  <span className="">Learn More</span>
+                  <i className="ri-arrow-right-line transition-transform duration-300 group-hover:translate-x-1.5"></i>
                 </button>
               </div>
             </ScrollReveal>

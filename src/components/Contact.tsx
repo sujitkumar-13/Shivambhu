@@ -2,20 +2,20 @@ import { ScrollReveal } from "./ScrollReveal"
 
 export const Contact = () => {
   return (
-    <section id="contact" className="bg-white box-border caret-transparent py-20 md:py-28">
-      <div className="box-border caret-transparent w-full px-4 md:px-20">
+    <section id="contact" className="bg-white py-20 md:py-28">
+      <div className="w-full px-4 md:px-20">
         <div className="flex flex-col lg:flex-row gap-16">
           {/* Left Column: Form */}
           <div className="flex-1">
             <ScrollReveal direction="right">
-              <h2 className="text-slate-800 text-3xl font-bold box-border caret-transparent leading-tight mb-4 md:text-5xl">
+              <h2 className="text-slate-800 text-3xl font-bold leading-tight mb-4 md:text-5xl">
                 Get Pure Water Delivered
               </h2>
               <p className="text-slate-600 text-lg mb-10">
                 Fill the form and our team will contact you within 24 hours
               </p>
 
-              <div className="bg-white box-border caret-transparent flex flex-col items-center">
+              <div className="bg-white flex flex-col items-center">
                 <div className="w-full space-y-4">
                   <input
                     type="text"

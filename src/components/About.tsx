@@ -4,16 +4,16 @@ import { ScrollReveal } from "./ScrollReveal"
 
 export const About = () => {
   return (
-    <section id="about" className="bg-white box-border caret-transparent py-20 md:py-28 overflow-hidden">
-      <div className="box-border caret-transparent w-full px-4 md:px-20">
-        <div className="items-center box-border caret-transparent flex flex-col gap-16 md:flex-row md:gap-24">
+    <section id="about" className="bg-white py-20 md:py-28 overflow-hidden">
+      <div className="w-full px-4 md:px-20">
+        <div className="items-center flex flex-col gap-16 md:flex-row md:gap-24">
           {/* Left Side: Content */}
-          <div className="box-border caret-transparent flex-1">
+          <div className="flex-1">
             <ScrollReveal direction="right">
               <span className="bg-cyan-50 border border-cyan-100 text-cyan-600 text-sm font-bold px-5 py-2.5 rounded-full mb-8 inline-block tracking-wide">
                 About Shivambhu
               </span>
-              <h2 className="text-slate-800 text-5xl font-bold box-border caret-transparent leading-[1.15] mb-8 md:text-6xl md:leading-[1.1]">
+              <h2 className="text-slate-800 text-5xl font-bold leading-[1.15] mb-8 md:text-6xl md:leading-[1.1]">
                 Serving Saharanpur <br />
                 <span className="text-cyan-600 font-bold">Since Our Inception</span>
               </h2>
@@ -30,7 +30,7 @@ export const About = () => {
               </div>
               <a
                 href="#"
-                className="mt-10 items-center text-cyan-600 box-border caret-transparent flex font-bold gap-x-2 text-xl hover:gap-x-4 transition-all"
+                className="mt-10 items-center text-cyan-600 flex font-bold gap-x-2 text-xl hover:gap-x-4 transition-all"
               >
                 <span>Visit Our Plant</span>
                 <i className="ri-arrow-right-line"></i>
@@ -39,13 +39,13 @@ export const About = () => {
           </div>
 
           {/* Right Side: Images and Stats */}
-          <div className="box-border caret-transparent flex-1 relative">
+          <div className="flex-1 relative">
             <ScrollReveal direction="left">
-              <div className="relative box-border caret-transparent">
+              <div className="relative">
                 <img
                   alt="Pure Water"
                   src={pipes.src}
-                  className="shadow-[rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0,0)_0px_0px_0px_0px,rgba(0,0,0.25)_0px_25px_50px_-12px] box-border caret-transparent max-w-full w-full rounded-3xl"
+                  className="shadow-[rgba(0,0,0,0.25)_0px_25px_50px_-12px] max-w-full w-full rounded-3xl"
                 />
 
                 {/* Doctor Image Overlay - Placed at top left as per screenshot */}
@@ -59,11 +59,11 @@ export const About = () => {
 
                 {/* Floating Stats - Placed at bottom right as per screenshot */}
                 <div className="absolute -bottom-8 -right-4 flex gap-4 z-10">
-                  <div className="bg-white shadow-[rgba(0,0,0,0.1)_0px_20px_25px_-5px,rgba(0,0,0,0.1)_0px_8px_10px_-6px] box-border caret-transparent p-5 rounded-3xl flex flex-col items-center min-w-[140px] border border-slate-50">
+                  <div className="bg-white shadow-[rgba(0,0,0,0.1)_0px_20px_25px_-5px,rgba(0,0,0,0.1)_0px_8px_10px_-6px] p-5 rounded-3xl flex flex-col items-center min-w-[140px] border border-slate-50">
                     <span className="text-cyan-600 text-3xl font-bold">10,000+</span>
                     <span className="text-slate-500 text-sm font-medium">Liters Daily</span>
                   </div>
-                  <div className="bg-white shadow-[rgba(0,0,0,0.1)_0px_20px_25px_-5px,rgba(0,0,0,0.1)_0px_8px_10px_-6px] box-border caret-transparent p-5 rounded-3xl flex flex-col items-center min-w-[140px] border border-slate-50">
+                  <div className="bg-white shadow-[rgba(0,0,0,0.1)_0px_20px_25px_-5px,rgba(0,0,0,0.1)_0px_8px_10px_-6px] p-5 rounded-3xl flex flex-col items-center min-w-[140px] border border-slate-50">
                     <span className="text-cyan-600 text-3xl font-bold">24/7</span>
                     <span className="text-slate-500 text-sm font-medium">Support</span>
                   </div>

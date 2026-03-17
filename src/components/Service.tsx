@@ -45,7 +45,7 @@ export const Service = () => {
             <ScrollReveal key={index} direction="up" delay={index * 0.1}>
               <div className="group bg-white flex flex-col p-8 rounded-3xl shadow-sm border border-slate-100 hover:border-cyan-400/50 hover:shadow-[0_20px_50px_rgba(8,145,178,0.15)] transition-all duration-300 h-full cursor-pointer">
                 <div className="bg-cyan-50 group-hover:bg-cyan-500 items-center flex h-14 justify-center w-14 mb-8 rounded-2xl md:h-16 md:w-16 transition-all duration-300">
-                  <i className={`${service.icon} text-cyan-500 group-hover:text-white text-2xl md:text-3xl transition-colors duration-300`}></i>
+                  <i className={`${service.icon} text-cyan-500 group-hover:text-white text-2xl  transition-colors duration-300`}></i>
                 </div>
                 <h3 className="text-slate-800 text-xl font-bold leading-7 mb-4">
                   {service.title}

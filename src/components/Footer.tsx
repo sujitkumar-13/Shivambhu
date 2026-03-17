@@ -8,7 +8,7 @@ export const Footer = () => {
           <div className="gap-x-8 grid grid-cols-none gap-y-8 md:gap-x-12 md:grid-cols-4 md:gap-y-12">
             {/* Footer Brand */}
             <div className="">
-              <div className="items-center flex mb-5">
+              <a href="/" className="items-center flex mb-5 hover:opacity-90 transition-opacity inline-flex">
                 <img
                   alt="Shivambhu Logo"
                   src="https://c.animaapp.com/mmuegslhBtHcOd/assets/8e30a6ba-e31f-49ac-baf8-cee4db7c3bb4.png"
@@ -17,7 +17,7 @@ export const Footer = () => {
                 <span className="text-xl font-bold block leading-7 ml-3">
                   Shivambhu
                 </span>
-              </div>
+              </a>
               <p className="text-slate-400 leading-[26px] mb-6">
                 Pure RO mineral water for a healthier tomorrow. Serving Saharanpur with
                 trust and quality since our inception.
@@ -51,29 +51,29 @@ export const Footer = () => {
               </h4>
               <ul className="list-none pl-0">
                 <li>
-                  <button className="text-slate-400 bg-transparent text-center p-0 hover:text-white transition-colors">
+                  <a href="#home" className="text-slate-400 bg-transparent text-center p-0 hover:text-white transition-colors inline-block">
                     Home
-                  </button>
+                  </a>
                 </li>
                 <li className="mt-3">
-                  <button className="text-slate-400 bg-transparent text-center p-0 hover:text-white transition-colors">
+                  <a href="#services" className="text-slate-400 bg-transparent text-center p-0 hover:text-white transition-colors inline-block">
                     Services
-                  </button>
+                  </a>
                 </li>
                 <li className="mt-3">
-                  <button className="text-slate-400 bg-transparent text-center p-0 hover:text-white transition-colors">
+                  <a href="#about" className="text-slate-400 bg-transparent text-center p-0 hover:text-white transition-colors inline-block">
                     About
-                  </button>
+                  </a>
                 </li>
                 <li className="mt-3">
-                  <button className="text-slate-400 bg-transparent text-center p-0 hover:text-white transition-colors">
+                  <a href="#testimonials" className="text-slate-400 bg-transparent text-center p-0 hover:text-white transition-colors inline-block">
                     Testimonials
-                  </button>
+                  </a>
                 </li>
                 <li className="mt-3">
-                  <button className="text-slate-400 bg-transparent text-center p-0 hover:text-white transition-colors">
+                  <a href="#contact" className="text-slate-400 bg-transparent text-center p-0 hover:text-white transition-colors inline-block">
                     Contact
-                  </button>
+                  </a>
                 </li>
               </ul>
             </div>

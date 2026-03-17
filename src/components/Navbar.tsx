@@ -8,7 +8,7 @@ export const Navbar = () => {
       <div className="w-full px-4 md:px-20">
         <div className="items-center flex justify-between">
           {/* Navbar Logo */}
-          <div className="items-center flex">
+          <a href="/" className="items-center flex hover:opacity-90 transition-opacity">
             <img
               alt="Shivambhu RO Water Plant Logo"
               src="https://c.animaapp.com/mmuegslhBtHcOd/assets/8e30a6ba-e31f-49ac-baf8-cee4db7c3bb4.png"
@@ -17,7 +17,7 @@ export const Navbar = () => {
             <span className="text-slate-800 text-xl font-bold block leading-7 ml-3">
               Shivambhu
             </span>
-          </div>
+          </a>
 
           {/* Desktop Menu */}
           <div className="items-center hidden md:flex">
@@ -39,10 +39,10 @@ export const Navbar = () => {
           </div>
 
           {/* Navbar CTA */}
-          <button className="text-white text-sm font-semibold items-center bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] hidden leading-5 px-6 py-2.5 rounded-full md:flex hover:shadow-lg transition-shadow">
+          <a href="#contact" className="text-white text-sm font-semibold items-center bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] hidden leading-5 px-6 py-2.5 rounded-full md:flex hover:shadow-lg transition-shadow">
             <span>Get Pure Water</span>
             <i className="ri-arrow-right-line ml-2"></i>
-          </button>
+          </a>
 
           {/* Mobile Menu Toggle */}
           <button 

@@ -42,7 +42,7 @@ export const Testimonials = () => {
 
   return (
     <section id="testimonials" className="bg-slate-50 py-16 md:py-28">
-      <div className="w-full px-6 md:px-20">
+      <div className="w-full px-6 md:px-10 lg:px-20">
         <ScrollReveal direction="up">
           <div className="text-center mb-12 md:mb-16">
             <div className="flex items-center justify-center gap-2 mb-4">

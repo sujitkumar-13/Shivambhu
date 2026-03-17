@@ -26,7 +26,7 @@ export const Service = () => {
 
   return (
     <section id="services" className="bg-white pb-16 md:pb-28">
-      <div className="w-full px-6 md:px-20 mt-16 md:mt-24">
+      <div className="w-full px-6 md:px-10 lg:px-20 mt-16 md:mt-24">
         <ScrollReveal direction="up">
           <div className="text-center mb-12 md:mb-16">
             <span className="text-cyan-600 text-xs md:text-sm font-bold tracking-widest uppercase mb-4 block">

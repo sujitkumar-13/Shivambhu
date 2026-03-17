@@ -2,8 +2,8 @@ import { ScrollReveal } from "./ScrollReveal"
 
 export const Contact = () => {
   return (
-    <section id="contact" className="bg-white py-16 md:py-28">
-      <div className="w-full px-6 md:px-20">
+    <section id="contact" className="bg-white py-16">
+      <div className="w-full px-6 md:px-10 lg:px-20">
         <div className="flex flex-col lg:flex-row gap-12 md:gap-16">
           {/* Left Column: Form */}
           <div className="flex-1">

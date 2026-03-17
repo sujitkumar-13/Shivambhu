@@ -90,4 +90,14 @@
     
     --radius: 0.5rem;
   }
+
+  ::selection {
+    background-color: #0891b2;
+    color: white;
+  }
+
+  ::-moz-selection {
+    background-color: #0891b2;
+    color: white;
+  }
 }

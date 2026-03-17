@@ -48,7 +48,7 @@ export const Footer = () => {
             </div>
 
             {/* Footer Links */}
-            <div className="text-center md:text-left">
+            <div className="text-left">
               <h4 className="text-lg font-semibold leading-7 mb-5">
                 Quick Links
               </h4>
@@ -82,7 +82,7 @@ export const Footer = () => {
             </div>
 
             {/* Footer Services */}
-            <div className="text-center md:text-left">
+            <div>
               <h4 className="text-lg font-semibold leading-7 mb-5">
                 Our Services
               </h4>
@@ -103,7 +103,7 @@ export const Footer = () => {
             </div>
 
             {/* Footer Newsletter */}
-            <div className="text-center md:text-left">
+            <div>
               <h4 className="text-lg font-semibold leading-7 mb-5">
                 Stay Updated
               </h4>
@@ -133,17 +133,9 @@ export const Footer = () => {
         <ScrollReveal direction="up" delay={0.2}>
           <div className="text-center border-slate-800 mt-12 pt-8 border-t border-solid">
             <p className="text-slate-500 text-sm leading-6 px-4">
-              © 2025 Shivambhu RO Water Plant, Saharanpur | All Rights Reserved
+              © 2026 Shivambhu RO Water Plant, Saharanpur | All Rights Reserved
               <br className="sm:hidden" />
-              <span className="hidden sm:inline"> | </span> 
-              <a
-                href="https://readdy.ai/?ref=logo"
-                className="hover:text-cyan-400 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Powered by Readdy
-              </a>
+              <span className="hidden sm:inline"> | </span>
             </p>
           </div>
         </ScrollReveal>

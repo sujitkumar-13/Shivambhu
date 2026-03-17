@@ -11,7 +11,7 @@ export const Hero = () => {
       <div className="relative w-full px-6 py-12 md:px-20">
         <div className="items-center gap-x-12 grid grid-cols-1 md:grid-cols-2 gap-y-16">
           {/* Hero Content Column */}
-          <div className="flex flex-col items-center text-center md:items-start md:text-left z-10">
+          <div className="flex flex-col tems-start z-10 order-2 md:order-1">
             <ScrollReveal direction="left">
               <div className="text-cyan-700 text-xs md:text-sm font-medium items-center bg-cyan-100 inline-flex leading-5 px-4 py-2 rounded-full">
                 <i className="ri-shield-check-line"></i>
@@ -65,18 +65,20 @@ export const Hero = () => {
           </div>
 
           {/* Hero Image Column */}
-          <div className="relative px-4 sm:px-8 md:px-0">
+          <div className="relative order-1 md:order-2 w-full max-w-lg mx-auto md:max-w-none">
             <ScrollReveal direction="right">
               <div className="relative group">
-                <div className="absolute -inset-4 bg-cyan-200/30 rounded-[40px] blur-3xl group-hover:bg-cyan-300/40 transition-all"></div>
-                <img
-                  alt="Pure Water"
-                  src={water.src}
-                  className="relative shadow-[rgba(0,0,0,0.15)_0px_25px_50px_-12px] max-w-full w-full rounded-3xl z-10 transform transition-transform duration-500 hover:scale-[1.02]"
-                />
-                
+                <div className="absolute -inset-4 bg-cyan-200/30 rounded-[40px] blur-3xl group-hover:bg-cyan-300/40 transition-all opacity-70"></div>
+                <div className="relative z-10 overflow-hidden rounded-3xl shadow-[0_20px_50px_rgba(8,145,178,0.2)] transform transition-transform duration-500 hover:scale-[1.02]">
+                  <img
+                    alt="Pure Water"
+                    src={water.src}
+                    className="w-full h-[450px] sm:h-[550px] md:h-auto object-cover"
+                  />
+                </div>
+
                 {/* Statistics Card */}
-                <div className="absolute bg-white/90 backdrop-blur-md shadow-2xl p-4 md:p-6 rounded-2xl -left-2 md:-left-8 -bottom-6 md:-bottom-8 z-20 border border-white/50 animate-bounce-subtle">
+                <div className="absolute bg-white/95 backdrop-blur-md shadow-2xl p-4 md:p-6 rounded-2xl -left-2 md:-left-8 -bottom-4 md:-bottom-8 z-20 border border-white/50 animate-bounce-subtle">
                   <div className="text-cyan-600 text-2xl md:text-3xl font-bold">5000+</div>
                   <div className="text-slate-600 text-xs md:text-sm font-medium">Happy Customers</div>
                 </div>

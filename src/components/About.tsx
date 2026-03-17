@@ -8,7 +8,7 @@ export const About = () => {
       <div className="w-full px-6 md:px-20">
         <div className="items-center flex flex-col gap-12 md:flex-row md:gap-24">
           {/* Left Side: Content */}
-          <div className="flex-1 text-center md:text-left">
+          <div className="flex-1 order-2 md:order-1">
             <ScrollReveal direction="right">
               <span className="bg-cyan-50 border border-cyan-100 text-cyan-600 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full mb-6 md:mb-8 inline-block tracking-wide uppercase">
                 About Shivambhu
@@ -39,44 +39,39 @@ export const About = () => {
           </div>
 
           {/* Right Side: Images and Stats */}
-          <div className="flex-1 relative mt-12 md:mt-0">
+          <div className="flex-1 relative mt-8 md:mt-0 order-1 md:order-2 w-full max-w-lg mx-auto md:max-w-none">
             <ScrollReveal direction="left">
-              <div className="relative px-4 sm:px-8 md:px-0">
-                <img
-                  alt="Pure Water"
-                  src={pipes.src}
-                  className="shadow-[rgba(0,0,0,0.15)_0px_25px_50px_-12px] max-w-full w-full rounded-3xl"
-                />
-
-                {/* Quality Control Label (Mobile Alternative to Doctor Image overlay) */}
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl shadow-lg border border-white/50 z-20 md:hidden animate-pulse">
-                  <div className="flex items-center gap-2">
-                    <i className="ri-shield-user-line text-cyan-600 text-xl"></i>
-                    <span className="text-slate-800 font-bold text-xs">Quality Checked</span>
-                  </div>
+              <div className="relative">
+                {/* Main pipes image */}
+                <div className="relative z-10 overflow-hidden rounded-3xl shadow-[0_20px_50px_rgba(8,145,178,0.15)]">
+                  <img
+                    alt="Pure Water"
+                    src={pipes.src}
+                    className="w-full h-[450px] sm:h-[550px] md:h-auto object-cover"
+                  />
                 </div>
 
-                {/* Doctor Image Overlay - Desktop Only or Tablet+ */}
-                <div className="absolute -top-12 -left-12 z-20 hidden lg:block">
+                {/* Doctor Image Overlay - Responsive */}
+                <div className="absolute -top-6 -left-4 md:-top-12 md:-left-12 z-20">
                   <div className="relative group">
-                    <div className="absolute -inset-2 bg-cyan-100 rounded-[32px] blur-xl opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute -inset-2 bg-cyan-100 rounded-[20px] md:rounded-[32px] blur-lg opacity-50 group-hover:opacity-100 transition-opacity"></div>
                     <img
                       src={doctor.src}
                       alt="Quality Control"
-                      className="relative w-[180px] h-[180px] object-cover rounded-3xl border-[6px] border-white shadow-2xl"
+                      className="relative w-[100px] h-[100px] md:w-[180px] md:h-[180px] object-cover rounded-2xl md:rounded-3xl border-[4px] md:border-[6px] border-white shadow-2xl"
                     />
                   </div>
                 </div>
 
                 {/* Floating Stats - Responsive placement */}
-                <div className="absolute -bottom-6 md:-bottom-10 right-0 md:-right-4 flex flex-col sm:flex-row gap-3 md:gap-4 z-20 w-full sm:w-auto justify-end px-4 sm:px-0">
-                  <div className="bg-white shadow-2xl p-4 md:p-5 rounded-2xl flex flex-col items-center min-w-[120px] md:min-w-[140px] border border-slate-50 transform hover:-translate-y-1 transition-transform">
-                    <span className="text-cyan-600 text-2xl md:text-3xl font-bold">10,000+</span>
-                    <span className="text-slate-500 text-xs md:text-sm font-medium">Liters Daily</span>
+                <div className="absolute -bottom-6 md:-bottom-10 right-0 md:-right-4 flex gap-3 md:gap-4 z-20 w-full sm:w-auto justify-end px-4 sm:px-0">
+                  <div className="bg-white/95 backdrop-blur-sm shadow-xl p-3 md:p-5 rounded-2xl flex flex-col items-center min-w-[100px] md:min-w-[140px] border border-white/50 transform hover:-translate-y-1 transition-transform">
+                    <span className="text-cyan-600 text-xl md:text-3xl font-bold">10,000+</span>
+                    <span className="text-slate-500 text-[10px] md:text-sm font-medium">Liters Daily</span>
                   </div>
-                  <div className="bg-white shadow-2xl p-4 md:p-5 rounded-2xl flex flex-col items-center min-w-[120px] md:min-w-[140px] border border-slate-50 transform hover:-translate-y-1 transition-transform">
-                    <span className="text-cyan-600 text-2xl md:text-3xl font-bold">24/7</span>
-                    <span className="text-slate-500 text-xs md:text-sm font-medium">Support</span>
+                  <div className="bg-white/95 backdrop-blur-sm shadow-xl p-3 md:p-5 rounded-2xl flex flex-col items-center min-w-[100px] md:min-w-[140px] border border-white/50 transform hover:-translate-y-1 transition-transform">
+                    <span className="text-cyan-600 text-xl md:text-3xl font-bold">24/7</span>
+                    <span className="text-slate-500 text-[10px] md:text-sm font-medium">Support</span>
                   </div>
                 </div>
               </div>

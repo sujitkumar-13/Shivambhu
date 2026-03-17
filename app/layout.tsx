@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "Pract - Next.js Migration",
-  description: "Converted from Vite to Next.js",
+  title: "Shivambhu",
+  description: "Pure Water, Healthy Life - Saharanpur's Trusted Water Purification plant",
 };
 
 export default function RootLayout({

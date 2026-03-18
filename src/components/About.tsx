@@ -10,7 +10,7 @@ export const About = () => {
           {/* Left Side: Content */}
           <div className="flex-1 order-2 lg:order-1">
             <ScrollReveal direction="right">
-              <span className="bg-cyan-50 border border-cyan-100 text-cyan-600 text-[10px] sm:text-xs md:text-sm font-bold px-5 py-2.5 rounded-full mb-6 md:mb-8 inline-block tracking-wide uppercase">
+              <span className="bg-cyan-50 border border-cyan-100 text-cyan-600 text-sm font-bold px-5 py-2.5 rounded-full mt-5 md:mt-0 mb-6 md:mb-8 inline-block tracking-wide uppercase">
                 About Shivambhu
               </span>
               <h2 className="text-slate-800 text-3xl font-bold leading-[1.2] mb-6 sm:text-4xl md:text-5xl lg:text-6xl lg:leading-[1.1]">
@@ -43,7 +43,7 @@ export const About = () => {
           {/* Right Side: Images and Stats */}
           <div className="flex-1 relative mt-8 lg:mt-0 order-1 lg:order-2 w-full max-w-sm sm:max-w-lg mx-auto lg:max-w-none">
             <ScrollReveal direction="left">
-              <div className="relative pb-12 sm:pb-0">
+              <div className="relative pb-0">
                 {/* Main pipes image */}
                 <div className="relative z-10 overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] shadow-[0_20px_50px_rgba(8,145,178,0.15)] group">
                   <img

@@ -68,7 +68,7 @@ export const Hero = () => {
           <div className="relative order-1 lg:order-2 w-full max-w-sm sm:max-w-lg mx-auto lg:max-w-none">
             <ScrollReveal direction="right">
               <div className="relative group p-4 sm:p-0">
-                <div className="relative z-10 overflow-hidden rounded-3xl shadow-xl transform transition-transform duration-500 hover:scale-[1.02]">
+                <div className="relative z-10 overflow-hidden rounded-3xl shadow-xl">
                   <img
                     alt="Pure Water"
                     src={water.src}
@@ -83,8 +83,21 @@ export const Hero = () => {
                 </div>
 
                 {/* Award Badge */}
-                <div className="absolute bg-cyan-600 shadow-xl p-3 md:p-4 rounded-2xl -right-2 sm:-right-4 md:-right-6 -top-4 z-20 flex items-center justify-center transition-transform hover:rotate-12">
-                  <i className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl ri-award-fill"></i>
+                <div className="absolute bg-cyan-600 shadow-xl 
+  p-2 sm:p-3 md:p-4 
+  rounded-xl sm:rounded-2xl 
+  right-2 top-0              /* ✅ FIX for mobile */
+  sm:-right-4 sm:-top-3       /* keep your design */
+  md:-right-6 md:-top-4 
+  lg:-right-2 lg:-top-3       /* EXACT same as your current desktop */
+  z-20 flex items-center justify-center 
+  transition-transform hover:rotate-12">
+
+                  <i className="text-white 
+    text-base sm:text-xl md:text-2xl lg:text-3xl 
+    ri-award-fill">
+                  </i>
+
                 </div>
               </div>
             </ScrollReveal>

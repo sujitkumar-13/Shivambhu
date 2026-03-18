@@ -1,5 +1,11 @@
 import { useState, useRef, useEffect } from "react"
 import { ScrollReveal } from "./ScrollReveal"
+import rajesh from "../assets/testimonials/rajesh.png"
+import priya from "../assets/testimonials/priya.png"
+import amit from "../assets/testimonials/amit.png"
+import sunita from "../assets/testimonials/sunita.png"
+import vikram from "../assets/testimonials/vikram.png"
+import neha from "../assets/testimonials/neha.png"
 
 export const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -9,37 +15,37 @@ export const Testimonials = () => {
     {
       name: "Rajesh Kumar",
       location: "Saharanpur",
-      image: "https://readdy.ai/api/search-image?query=indian%20man%20professional%20headshot%20smiling&width=100&height=100&seq=1",
+      image: rajesh.src,
       text: "The water quality is exceptional! Since switching to Shivambhu, my family's health has improved significantly. Highly recommended for every household.",
     },
     {
       name: "Priya Sharma",
       location: "Saharanpur",
-      image: "https://readdy.ai/api/search-image?query=indian%20woman%20smiling%20professional%20portrait&width=100&height=100&seq=1",
+      image: priya.src,
       text: "Their home delivery service is prompt and reliable. The water tastes pure and fresh. Best RO water service in Saharanpur without any doubt.",
     },
     {
       name: "Amit Gupta",
       location: "Saharanpur",
-      image: "https://readdy.ai/api/search-image?query=young%20indian%20man%20smiling%20casual&width=100&height=100&seq=2",
+      image: amit.src,
       text: "Excellent installation service! The technician was professional and explained everything clearly. Our RO system works perfectly.",
     },
     {
       name: "Sunita Devi",
       location: "Saharanpur",
-      image: "https://readdy.ai/api/search-image?query=indian%20middle%20aged%20woman%20smiling&width=100&height=100&seq=3",
+      image: sunita.src,
       text: "I've been using their AMC service for 2 years now. Regular maintenance keeps our RO running smoothly. Great value for money!",
     },
     {
       name: "Vikram Singh",
       location: "Saharanpur",
-      image: "https://readdy.ai/api/search-image?query=indian%20man%20portrait%20smiling&width=100&height=100&seq=4",
+      image: vikram.src,
       text: "The water testing service revealed important insights about our water quality. Now we drink with complete confidence. Thank you Shivambhu!",
     },
     {
       name: "Neha Patel",
       location: "Saharanpur",
-      image: "https://readdy.ai/api/search-image?query=young%20indian%20woman%20professional%20portrait&width=100&height=100&seq=5",
+      image: neha.src,
       text: "Outstanding customer support! They resolved my query within hours. The water purity is unmatched. Truly the best in Saharanpur.",
     },
   ];

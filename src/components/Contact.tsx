@@ -102,17 +102,18 @@ export const Contact = () => {
                 </div>
               </div>
 
-              {/* Map Placeholder */}
-              <div className="rounded-[24px] md:rounded-[32px] overflow-hidden border border-slate-100 shadow-md h-[180px] sm:h-[220px] md:h-[250px] relative mt-8 transform hover:scale-[1.01] transition-transform">
-                <img
-                  src="https://readdy.ai/api/search-image?query=stylized%20map%20showing%20location%20in%20saharanpur%20with%20pin%20marker&width=800&height=400&seq=1"
-                  alt="Location Map"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-4 left-4 bg-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg shadow-sm border border-slate-100 flex items-center gap-2">
-                  <span className="text-[10px] sm:text-xs md:text-sm font-semibold text-slate-800">Maps</span>
-                  <i className="ri-external-link-line text-slate-400"></i>
-                </div>
+              {/* Google Map */}
+              <div className="rounded-[24px] md:rounded-[32px] overflow-hidden border border-slate-100 shadow-md h-[250px] sm:h-[300px] md:h-[350px] relative mt-8 transform hover:scale-[1.01] transition-all duration-300">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d221219.1707068451!2d77.556427!3d29.963633!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390eea921f841f45%3A0x39baf780903811f!2sSaharanpur%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1773827186265!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Shivambhu Location"
+                ></iframe>
               </div>
             </ScrollReveal>
           </div>

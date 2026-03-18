@@ -67,7 +67,7 @@ export const About = () => {
                 </div>
 
                 {/* Floating Stats - Responsive placement */}
-                <div className="absolute -bottom-10 sm:-bottom-8 right-0 sm:-right-4 flex gap-3 md:gap-6 z-20 w-full sm:w-auto justify-center sm:justify-end px-2 sm:px-0">
+                <div className="absolute bottom-6 sm:-bottom-8 right-4 sm:-right-4 flex gap-3 md:gap-6 z-20 w-auto justify-end px-2 sm:px-0">
                   <div className="bg-white/95 backdrop-blur-md shadow-2xl p-4 md:p-6 rounded-[1.5rem] flex flex-col items-center min-w-[100px] sm:min-w-[120px] md:min-w-[150px] border border-white/50 transform hover:-translate-y-2 transition-all duration-300">
                     <span className="text-cyan-600 text-lg sm:text-2xl md:text-3xl font-bold tracking-tight">10,000+</span>
                     <span className="text-slate-500 text-[8px] sm:text-[10px] md:text-xs font-semibold uppercase tracking-wider">Liters Daily</span>

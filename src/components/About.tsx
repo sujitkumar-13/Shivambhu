@@ -8,7 +8,7 @@ export const About = () => {
       <div className="w-full px-4 sm:px-6 md:px-10 lg:px-20">
         <div className="items-center flex flex-col gap-12 lg:flex-row lg:gap-24">
           {/* Left Side: Content */}
-          <div className="flex-1 order-2 lg:order-1 text-center lg:text-left">
+          <div className="flex-1 order-2 lg:order-1">
             <ScrollReveal direction="right">
               <span className="bg-cyan-50 border border-cyan-100 text-cyan-600 text-[10px] sm:text-xs md:text-sm font-bold px-5 py-2.5 rounded-full mb-6 md:mb-8 inline-block tracking-wide uppercase">
                 About Shivambhu
@@ -61,7 +61,7 @@ export const About = () => {
                     <img
                       src={doctor.src}
                       alt="Quality Control"
-                      className="relative w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[180px] md:h-[180px] object-cover rounded-xl sm:rounded-2xl md:rounded-[2rem] border-[3px] sm:border-[5px] md:border-[8px] border-white shadow-2xl"
+                      className="relative w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[180px] md:h-[180px] object-cover rounded-3xl border-[5px] border-white shadow-2xl"
                     />
                   </div>
                 </div>

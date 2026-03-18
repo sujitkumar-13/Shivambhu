@@ -7,7 +7,7 @@ export const Footer = () => {
         <ScrollReveal direction="up" delay={0.1}>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-12 sm:gap-y-16">
             {/* Footer Brand */}
-            <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
+            <div className="flex flex-col">
               <a href="/" className="items-center flex mb-6 hover:opacity-90 transition-opacity inline-flex">
                 <img
                   alt="Shivambhu Logo"
@@ -48,7 +48,7 @@ export const Footer = () => {
             </div>
 
             {/* Footer Links */}
-            <div className="lg:pl-8 text-center sm:text-left">
+            <div className="lg:pl-8">
               <h4 className="text-base sm:text-lg font-bold mb-6 sm:mb-8 text-white">
                 Quick Links
               </h4>
@@ -87,24 +87,24 @@ export const Footer = () => {
             </div>
 
             {/* Footer Services */}
-            <div className="text-center sm:text-left">
+            <div>
               <h4 className="text-base sm:text-lg font-bold mb-6 sm:mb-8 text-white">
                 Our Services
               </h4>
               <ul className="space-y-3 sm:space-y-4">
-                <li className="flex items-center justify-center sm:justify-start gap-3 text-slate-400 text-sm sm:text-base">
+                <li className="flex items-center gap-3 text-slate-400 text-sm sm:text-base">
                   <i className="ri-checkbox-circle-line text-cyan-600 shrink-0"></i>
                   RO Installation
                 </li>
-                <li className="flex items-center justify-center sm:justify-start gap-3 text-slate-400 text-sm sm:text-base">
+                <li className="flex items-center gap-3 text-slate-400 text-sm sm:text-base">
                   <i className="ri-checkbox-circle-line text-cyan-600 shrink-0"></i>
                   Water Testing
                 </li>
-                <li className="flex items-center justify-center sm:justify-start gap-3 text-slate-400 text-sm sm:text-base">
+                <li className="flex items-center gap-3 text-slate-400 text-sm sm:text-base">
                   <i className="ri-checkbox-circle-line text-cyan-600 shrink-0"></i>
                   Home Delivery
                 </li>
-                <li className="flex items-center justify-center sm:justify-start gap-3 text-slate-400 text-sm sm:text-base">
+                <li className="flex items-center gap-3 text-slate-400 text-sm sm:text-base">
                   <i className="ri-checkbox-circle-line text-cyan-600 shrink-0"></i>
                   AMC Services
                 </li>
@@ -112,14 +112,14 @@ export const Footer = () => {
             </div>
 
             {/* Footer Newsletter */}
-            <div className="xl:pl-4 text-center sm:text-left">
+            <div className="xl:pl-4">
               <h4 className="text-base sm:text-lg font-bold mb-6 sm:mb-8 text-white">
                 Stay Updated
               </h4>
               <p className="text-slate-400 mb-6 sm:mb-8 text-sm sm:text-base leading-relaxed">
                 Join our newsletter to get water quality tips and exclusive seasonal offers.
               </p>
-              <form className="space-y-3 px-4 sm:px-0 max-w-sm mx-auto sm:mx-0">
+              <form className="space-y-3">
                 <div className="relative group">
                   <input
                     placeholder="Your email address"

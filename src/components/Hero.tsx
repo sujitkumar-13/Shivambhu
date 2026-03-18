@@ -11,7 +11,7 @@ export const Hero = () => {
       <div className="relative w-full px-4 sm:px-6 md:px-10 lg:px-20 py-8 sm:py-12">
         <div className="items-center gap-x-12 grid grid-cols-1 lg:grid-cols-2 gap-y-12 sm:gap-y-16">
           {/* Hero Content Column */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left z-10 order-2 lg:order-1">
+          <div className="flex flex-col items-center lg:items-start z-10 order-2 lg:order-1">
             <ScrollReveal direction="left">
               <div className="text-cyan-700 text-[10px] sm:text-xs md:text-sm font-medium items-center bg-cyan-100 inline-flex leading-5 px-4 py-2 rounded-full">
                 <i className="ri-shield-check-line"></i>

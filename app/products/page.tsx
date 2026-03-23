@@ -36,6 +36,24 @@ export default function ProductsPage() {
     });
   }, [searchQuery, activeCategory, products]);
 
+  const handleBuyNow = (e: React.MouseEvent, product: any) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const phoneNumber = "919997690669";
+    const message = `Hello Shivambhu! I'm interested in buying:
+*Product:* ${product.name}
+*Quantity:* 1
+*Total Price:* ₹${product.price}
+
+Please let me know the next steps.`;
+    
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <div className="font-inter">
       <Navbar />
@@ -97,7 +115,7 @@ export default function ProductsPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-10">
               {filteredProducts.map((product, index) => (
                 <ScrollReveal key={product.id} direction="up" delay={index * 0.05}>
-                  <Link href={`/products/${product.id}`} className="group block h-full">
+                  <Link href={`/products/${product.slug}`} className="group block h-full">
                     <div className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-cyan-100/50 transition-all duration-500 h-full flex flex-col">
                       {/* Image Area */}
                       <div className="relative aspect-[4/3] overflow-hidden bg-slate-50">
@@ -131,7 +149,10 @@ export default function ProductsPage() {
                             </div>
                           </div>
 
-                          <button className="w-full bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] text-white font-semibold py-4 rounded-xl flex items-center justify-center gap-2 hover:shadow-lg hover:brightness-110 transition-all active:scale-95">
+                          <button 
+                            onClick={(e) => handleBuyNow(e, product)}
+                            className="w-full bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] text-white font-semibold py-4 rounded-xl flex items-center justify-center gap-2 hover:shadow-lg hover:brightness-110 transition-all active:scale-95"
+                          >
                             Buy Now
                             <i className="ri-arrow-right-line"></i>
                           </button>

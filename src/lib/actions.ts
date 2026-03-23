@@ -3,6 +3,16 @@
 import prisma, { sql } from './prisma'
 import { revalidatePath } from 'next/cache'
 
+// Helper to generate slug from name
+function generateSlug(name: string) {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 // --- Categories ---
 export async function getCategories() {
   const result = await sql`SELECT * FROM "Category" ORDER BY name ASC`
@@ -57,26 +67,33 @@ export async function getProducts() {
   return await sql`SELECT * FROM "Product" ORDER BY "createdAt" DESC`
 }
 
+export async function getProductBySlug(slug: string) {
+  const [product] = await sql`SELECT * FROM "Product" WHERE slug = ${slug} LIMIT 1`
+  return product
+}
+
 export async function createProduct(data: any) {
   const id = `cl${Math.random().toString(36).substring(2, 11)}`
+  const slug = generateSlug(data.name)
   const price = parseFloat(data.price)
   const rating = parseFloat(data.rating || '5.0')
   const stock = parseInt(data.stock || '0')
 
   await sql`
-    INSERT INTO "Product" (id, name, description, price, image, "categoryName", rating, stock, "createdAt", "updatedAt")
-    VALUES (${id}, ${data.name}, ${data.description}, ${price}, ${data.image}, ${data.categoryName}, ${rating}, ${stock}, NOW(), NOW())
+    INSERT INTO "Product" (id, name, description, price, image, slug, "categoryName", rating, stock, "createdAt", "updatedAt")
+    VALUES (${id}, ${data.name}, ${data.description}, ${price}, ${data.image}, ${slug}, ${data.categoryName}, ${rating}, ${stock}, NOW(), NOW())
   `
 
   revalidatePath('/admin/products')
   revalidatePath('/products')
-  return { id, ...data }
+  return { id, slug, ...data }
 }
 
 export async function updateProduct(id: string, data: any) {
   const price = parseFloat(data.price)
   const rating = parseFloat(data.rating || '5.0')
   const stock = parseInt(data.stock || '0')
+  const slug = generateSlug(data.name)
 
   await sql`
     UPDATE "Product"
@@ -85,6 +102,7 @@ export async function updateProduct(id: string, data: any) {
       description = ${data.description},
       price = ${price},
       image = ${data.image},
+      slug = ${slug},
       "categoryName" = ${data.categoryName},
       rating = ${rating},
       stock = ${stock},
@@ -93,9 +111,9 @@ export async function updateProduct(id: string, data: any) {
   `
 
   revalidatePath('/admin/products')
-  revalidatePath(`/products/${id}`)
+  revalidatePath(`/products/${slug}`)
   revalidatePath('/products')
-  return { id, ...data }
+  return { id, slug, ...data }
 }
 
 export async function deleteProduct(id: string) {

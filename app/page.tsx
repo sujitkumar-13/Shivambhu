@@ -6,6 +6,7 @@ import { Service } from "@/components/Service";
 import { Testimonials } from "@/components/Testimonials";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { FeaturedProducts } from "@/components/FeaturedProducts";
 import { VapiWidget } from "@/components/VapiWidget";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Service />
+      <FeaturedProducts />
       <Testimonials />
       <Contact />
       <Footer />

@@ -5,12 +5,12 @@ import { Navbar } from "../../../src/components/Navbar";
 import { Footer } from "../../../src/components/Footer";
 import { ScrollReveal } from "../../../src/components/ScrollReveal";
 import { useState, useMemo, useEffect } from "react";
-import { getProductById } from "@/lib/actions";
+import { getProductBySlug } from "@/lib/actions";
 import Link from "next/link";
 
 export default function ProductDetailsPage() {
   const params = useParams();
-  const productId = params.id as string;
+  const productSlug = params.slug as string;
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [distance, setDistance] = useState(0);
@@ -18,12 +18,12 @@ export default function ProductDetailsPage() {
 
   useEffect(() => {
     async function fetchData() {
-      const p = await getProductById(productId);
+      const p = await getProductBySlug(productSlug);
       setProduct(p);
       setLoading(false);
     }
     fetchData();
-  }, [productId]);
+  }, [productSlug]);
 
   const pricing = useMemo(() => {
     if (!product) return { base: 0, increment: 0, total: 0 };
@@ -72,6 +72,22 @@ export default function ProductDetailsPage() {
       </div>
     );
   }
+
+  const handleBuyNow = () => {
+    const phoneNumber = "919997690669";
+    const message = `Hello Shivambhu! I'm interested in buying:
+*Product:* ${product.name}
+*Quantity:* ${quantity}
+*Total Price:* ₹${pricing.total}
+*Delivery Distance:* ${distance} km
+
+Please let me know the next steps.`;
+    
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, '_blank');
+  };
 
   return (
     <div className="font-inter">
@@ -184,12 +200,16 @@ export default function ProductDetailsPage() {
                       </div>
 
                       {/* Buy Button */}
-                      <button className="flex-1 bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] text-white font-semibold py-4 rounded-2xl flex items-center justify-center gap-3 hover:shadow-2xl hover:shadow-cyan-500/30 hover:-translate-y-1 transition-all duration-300 active:scale-95 text-lg group">
+                      <button 
+                        onClick={handleBuyNow}
+                        className="flex-1 bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] text-white font-semibold py-4 rounded-2xl flex items-center justify-center gap-3 hover:shadow-2xl hover:shadow-cyan-500/30 hover:-translate-y-1 transition-all duration-300 active:scale-95 text-lg group"
+                      >
                         <i className="ri-shopping-cart-2-line group-hover:rotate-12 transition-transform"></i>
                         <span>Buy Now — ₹{pricing.total}</span>
                       </button>
                     </div>
                   </div>
+
 
                   {/* Feature Icons */}
                   <div className="grid grid-cols-3 gap-4 pt-8 border-t border-slate-100">

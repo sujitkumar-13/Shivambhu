@@ -30,6 +30,7 @@ model Product {
   description String
   price       Float
   image       String
+  slug        String   @unique
   categoryName String
   category    Category @relation(fields: [categoryName], references: [name])
   rating      Float    @default(5.0)

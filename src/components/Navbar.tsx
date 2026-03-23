@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,7 +9,7 @@ export const Navbar = () => {
       <div className="w-full px-4 sm:px-6 md:px-10 lg:px-20">
         <div className="items-center flex justify-between gap-4">
           {/* Navbar Logo */}
-          <a href="/" className="items-center flex hover:opacity-90 transition-all active:scale-95 shrink-0">
+          <Link href="/" className="items-center flex hover:opacity-90 transition-all active:scale-95 shrink-0">
             <img
               alt="Shivambhu RO Water Plant Logo"
               src="https://c.animaapp.com/mmuegslhBtHcOd/assets/8e30a6ba-e31f-49ac-baf8-cee4db7c3bb4.png"
@@ -17,32 +18,32 @@ export const Navbar = () => {
             <span className="text-slate-800 text-base sm:text-lg md:text-xl font-bold block leading-7 ml-2 md:ml-3">
               Shivambhu
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Menu */}
           <div className="items-center hidden lg:flex">
-            <a href="#home" className="text-slate-700 text-sm font-medium leading-5 hover:text-cyan-600 transition-colors">
+            <Link href="/" className="text-slate-700 text-sm font-medium leading-5 hover:text-cyan-600 transition-colors">
               Home
-            </a>
-            <a href="#services" className="text-slate-700 text-sm font-medium leading-5 ml-8 hover:text-cyan-600 transition-colors">
+            </Link>
+            <Link href="/#services" className="text-slate-700 text-sm font-medium leading-5 ml-8 hover:text-cyan-600 transition-colors">
               Services
-            </a>
-            <a href="#about" className="text-slate-700 text-sm font-medium leading-5 ml-8 hover:text-cyan-600 transition-colors">
+            </Link>
+            <Link href="/about" className="text-slate-700 text-sm font-medium leading-5 ml-8 hover:text-cyan-600 transition-colors">
               About
-            </a>
-            <a href="#testimonials" className="text-slate-700 text-sm font-medium leading-5 ml-8 hover:text-cyan-600 transition-colors">
+            </Link>
+            <Link href="/#testimonials" className="text-slate-700 text-sm font-medium leading-5 ml-8 hover:text-cyan-600 transition-colors">
               Testimonials
-            </a>
-            <a href="#contact" className="text-slate-700 text-sm font-medium leading-5 ml-8 hover:text-cyan-600 transition-colors">
+            </Link>
+            <Link href="/#contact" className="text-slate-700 text-sm font-medium leading-5 ml-8 hover:text-cyan-600 transition-colors">
               Contact
-            </a>
+            </Link>
           </div>
 
           {/* Navbar CTA */}
-          <a href="#contact" className="text-white text-sm font-semibold items-center bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] hidden leading-5 px-6 py-2.5 rounded-full lg:flex hover:shadow-lg transition-all active:scale-95">
+          <Link href="/#contact" className="text-white text-sm font-semibold items-center bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] hidden leading-5 px-6 py-2.5 rounded-full lg:flex hover:shadow-lg transition-all active:scale-95">
             <span>Get Pure Water</span>
             <i className="ri-arrow-right-line ml-2"></i>
-          </a>
+          </Link>
 
           {/* Mobile Menu Toggle */}
           <button
@@ -57,50 +58,50 @@ export const Navbar = () => {
         {/* Mobile Menu */}
         <div className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${isMenuOpen ? 'max-h-[500px] opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
           <div className="border-t border-slate-100 pt-4 pb-4 flex flex-col space-y-1">
-            <a
-              href="#home"
+            <Link
+              href="/"
               onClick={() => setIsMenuOpen(false)}
               className="text-slate-700 font-medium py-3 px-4 rounded-xl hover:bg-cyan-50 hover:text-cyan-600 transition-colors"
             >
               Home
-            </a>
-            <a
-              href="#services"
+            </Link>
+            <Link
+              href="/#services"
               onClick={() => setIsMenuOpen(false)}
               className="text-slate-700 font-medium py-3 px-4 rounded-xl hover:bg-cyan-50 hover:text-cyan-600 transition-colors"
             >
               Services
-            </a>
-            <a
-              href="#about"
+            </Link>
+            <Link
+              href="/about"
               onClick={() => setIsMenuOpen(false)}
               className="text-slate-700 font-medium py-3 px-4 rounded-xl hover:bg-cyan-50 hover:text-cyan-600 transition-colors"
             >
               About
-            </a>
-            <a
-              href="#testimonials"
+            </Link>
+            <Link
+              href="/#testimonials"
               onClick={() => setIsMenuOpen(false)}
               className="text-slate-700 font-medium py-3 px-4 rounded-xl hover:bg-cyan-50 hover:text-cyan-600 transition-colors"
             >
               Testimonials
-            </a>
-            <a
-              href="#contact"
+            </Link>
+            <Link
+              href="/#contact"
               onClick={() => setIsMenuOpen(false)}
               className="text-slate-700 font-medium py-3 px-4 rounded-xl hover:bg-cyan-50 hover:text-cyan-600 transition-colors"
             >
               Contact
-            </a>
+            </Link>
             <div className="pt-4 px-2">
-              <a
-                href="#contact"
+              <Link
+                href="/#contact"
                 onClick={() => setIsMenuOpen(false)}
                 className="w-full text-white text-sm font-semibold flex items-center justify-center bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] py-4 rounded-xl shadow-md active:scale-[0.98] transition-transform"
               >
                 <span>Get Pure Water</span>
                 <i className="ri-arrow-right-line ml-2"></i>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

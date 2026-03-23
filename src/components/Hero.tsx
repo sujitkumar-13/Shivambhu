@@ -32,11 +32,11 @@ export const Hero = () => {
                 trust.
               </p>
               <div className="gap-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start mt-8 w-full">
-                <button className="w-full sm:w-auto text-white font-semibold items-center justify-center bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] flex text-center px-8 py-4 rounded-full hover:shadow-xl hover:scale-105 transition-all active:scale-95">
+                <button className="w-full sm:w-auto text-white font-semibold items-center justify-center bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] flex text-center px-8 py-4 rounded-full hover:shadow-2xl hover:scale-110 hover:-translate-y-1 transition-all duration-300 active:scale-95">
                   <span>Order Now</span>
-                  <i className="ri-arrow-right-line ml-2"></i>
+                  <i className="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform"></i>
                 </button>
-                <button className="w-full sm:w-auto text-cyan-600 font-semibold items-center justify-center bg-white border-cyan-600 px-8 py-4 rounded-full border-2 hover:bg-cyan-50 transition-all active:scale-95">
+                <button className="w-full sm:w-auto text-cyan-600 font-semibold items-center justify-center bg-white border-cyan-600 px-8 py-4 rounded-full border-2 hover:bg-cyan-50 hover:scale-110 hover:-translate-y-1 transition-all duration-300 active:scale-95 shadow-sm hover:shadow-md">
                   <span>Learn More</span>
                 </button>
               </div>
@@ -68,16 +68,16 @@ export const Hero = () => {
           <div className="relative order-1 lg:order-2 w-full max-w-sm sm:max-w-lg mx-auto lg:max-w-none">
             <ScrollReveal direction="right">
               <div className="relative group p-4 sm:p-0">
-                <div className="relative z-10 overflow-hidden rounded-3xl shadow-xl">
+                <div className="relative z-10 overflow-hidden rounded-3xl shadow-xl transition-transform duration-700 hover:scale-[1.02] group/img">
                   <img
                     alt="Pure Water"
                     src={water.src}
-                    className="w-full h-[400px] sm:h-[550px] md:h-[650px] lg:h-auto object-cover"
+                    className="w-full h-[400px] sm:h-[550px] md:h-[650px] lg:h-auto object-cover transition-transform duration-700 group-hover/img:scale-105"
                   />
                 </div>
 
                 {/* Statistics Card */}
-                <div className="absolute bg-white/95 backdrop-blur-md shadow-2xl p-4 md:p-6 rounded-2xl -left-2 sm:-left-4 md:-left-8 -bottom-4 md:-bottom-6 lg:-bottom-8 z-20 border border-white/50 animate-bounce-subtle">
+                <div className="absolute bg-white/95 backdrop-blur-md shadow-2xl p-4 md:p-6 rounded-2xl -left-2 sm:-left-4 md:-left-8 -bottom-4 md:-bottom-6 lg:-bottom-8 z-20 border border-white/50 animate-bounce-subtle transition-all duration-500 hover:scale-110 hover:-translate-y-2 hover:shadow-cyan-200/50">
                   <div className="text-cyan-600 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold">5000+</div>
                   <div className="text-slate-600 text-[10px] sm:text-xs md:text-sm font-medium">Happy Customers</div>
                 </div>
@@ -91,7 +91,7 @@ export const Hero = () => {
   md:-right-6 md:-top-4 
   lg:-right-2 lg:-top-3       /* EXACT same as your current desktop */
   z-20 flex items-center justify-center 
-  transition-transform hover:rotate-12">
+  transition-all duration-500 hover:rotate-12 hover:scale-110 hover:shadow-cyan-400/50">
 
                   <i className="text-white 
     text-base sm:text-xl md:text-2xl lg:text-3xl 

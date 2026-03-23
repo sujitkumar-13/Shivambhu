@@ -105,10 +105,10 @@ export const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" className="bg-slate-50 py-16 md:py-28">
-      <div className="w-full px-4 sm:px-6 md:px-10 lg:px-20">
+    <section id="testimonials" className="bg-slate-50 py-16 md:py-28 overflow-hidden">
+      <div className="w-full">
         <ScrollReveal direction="up">
-          <div className="text-center mb-10 md:mb-16">
+          <div className="text-center mb-12 md:mb-20 px-4 sm:px-6 md:px-10 lg:px-20">
             <div className="flex items-center justify-center gap-2 mb-4">
               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-cyan-500"></div>
               <span className="text-cyan-600 text-[10px] sm:text-xs md:text-sm font-bold tracking-widest uppercase block">
@@ -125,36 +125,34 @@ export const Testimonials = () => {
           </div>
         </ScrollReveal>
 
-        {/* Mobile View: Carousel */}
-        <div className="md:hidden">
-          <div
-            ref={scrollRef}
-            onScroll={handleScroll}
-            className="flex overflow-x-auto snap-x snap-mandatory gap-6 no-scrollbar pb-8"
-          >
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="w-full shrink-0 snap-center px-2">
-                <div className="bg-white shadow-xl border border-slate-100 p-8 md:p-10 rounded-[32px] h-full transition-all">
+        {/* Infinite Scroll Container */}
+        <div className="relative flex overflow-hidden">
+          <div className="flex animate-infinite-scroll gap-6 md:gap-8 pb-10">
+            {/* First set of testimonials */}
+            {[...testimonials, ...testimonials].map((testimonial, index) => (
+              <div 
+                key={index} 
+                className="w-[350px] sm:w-[450px] md:w-[500px] shrink-0"
+              >
+                <div className="group bg-white shadow-sm hover:shadow-xl border border-slate-100 p-8 md:p-10 rounded-[2.5rem] h-full transition-all duration-500 hover:-translate-y-2">
                   <div className="items-center flex mb-6">
                     <div className="flex text-yellow-400 gap-x-1">
-                      <i className="ri-star-fill text-sm"></i>
-                      <i className="ri-star-fill text-sm"></i>
-                      <i className="ri-star-fill text-sm"></i>
-                      <i className="ri-star-fill text-sm"></i>
-                      <i className="ri-star-fill text-sm"></i>
+                      {[...Array(5)].map((_, i) => (
+                        <i key={i} className="ri-star-fill text-sm"></i>
+                      ))}
                     </div>
                   </div>
-                  <p className="text-slate-600 text-base leading-relaxed mb-8 italic">
+                  <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-8 italic">
                     "{testimonial.text}"
                   </p>
                   <div className="items-center flex mt-auto">
                     <img
                       alt={testimonial.name}
                       src={testimonial.image}
-                      className="h-12 w-12 object-cover rounded-full border-2 border-slate-50 shrink-0"
+                      className="h-12 w-12 object-cover rounded-full border-2 border-slate-50 shrink-0 transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="ml-4">
-                      <div className="text-slate-800 font-bold text-base">
+                      <div className="text-slate-800 font-bold text-base group-hover:text-cyan-600 transition-colors duration-300">
                         {testimonial.name}
                       </div>
                       <div className="text-slate-500 text-sm leading-5">
@@ -167,63 +165,9 @@ export const Testimonials = () => {
             ))}
           </div>
 
-          {/* Dots Indicator */}
-          <div className="flex justify-center gap-2 mt-4">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  if (scrollRef.current) {
-                    scrollRef.current.scrollTo({
-                      left: index * scrollRef.current.offsetWidth,
-                      behavior: "smooth",
-                    });
-                  }
-                }}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  activeIndex === index ? "w-6 bg-cyan-600" : "w-2 bg-slate-300"
-                }`}
-                aria-label={`Go to testimonial ${index + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Desktop View: Grid */}
-        <div className="hidden md:grid gap-6 md:gap-8 grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <ScrollReveal key={index} direction="up" delay={index * 0.1}>
-              <div className="bg-white shadow-sm border border-slate-100 p-6 sm:p-7 md:p-8 rounded-3xl h-full hover:shadow-md transition-all hover:-translate-y-1">
-                <div className="items-center flex mb-6">
-                  <div className="flex text-yellow-400 gap-x-1">
-                    <i className="ri-star-fill text-xs sm:text-sm md:text-base"></i>
-                    <i className="ri-star-fill text-xs sm:text-sm md:text-base"></i>
-                    <i className="ri-star-fill text-xs sm:text-sm md:text-base"></i>
-                    <i className="ri-star-fill text-xs sm:text-sm md:text-base"></i>
-                    <i className="ri-star-fill text-xs sm:text-sm md:text-base"></i>
-                  </div>
-                </div>
-                <p className="text-slate-600 text-sm md:text-base leading-relaxed mb-8 italic">
-                  "{testimonial.text}"
-                </p>
-                <div className="items-center flex mt-auto">
-                  <img
-                    alt={testimonial.name}
-                    src={testimonial.image}
-                    className="h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12 object-cover rounded-full border-2 border-slate-50 shrink-0"
-                  />
-                  <div className="ml-3 sm:ml-4">
-                    <div className="text-slate-800 font-bold text-sm sm:text-base">
-                      {testimonial.name}
-                    </div>
-                    <div className="text-slate-500 text-[10px] sm:text-xs md:text-sm leading-5">
-                      {testimonial.location}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
+          {/* Gradient Overlays for smooth edges */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-slate-50 to-transparent z-10"></div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-slate-50 to-transparent z-10"></div>
         </div>
       </div>
     </section>

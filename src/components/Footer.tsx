@@ -54,31 +54,31 @@ export const Footer = () => {
               </h4>
               <ul className="space-y-3 sm:space-y-4">
                 <li>
-                  <a href="#home" className="text-slate-400 hover:text-cyan-500 transition-colors text-sm sm:text-base inline-flex items-center gap-2 group">
+                  <a href="#home" className="text-slate-400 hover:text-cyan-500 transition-all duration-300 text-sm sm:text-base inline-flex items-center gap-2 group hover:translate-x-1">
                     <span className="h-0.5 w-0 bg-cyan-500 group-hover:w-2 transition-all duration-300 hidden sm:block"></span>
                     Home
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="text-slate-400 hover:text-cyan-500 transition-colors text-sm sm:text-base inline-flex items-center gap-2 group">
+                  <a href="#services" className="text-slate-400 hover:text-cyan-500 transition-all duration-300 text-sm sm:text-base inline-flex items-center gap-2 group hover:translate-x-1">
                     <span className="h-0.5 w-0 bg-cyan-500 group-hover:w-2 transition-all duration-300 hidden sm:block"></span>
                     Services
                   </a>
                 </li>
                 <li>
-                  <a href="#about" className="text-slate-400 hover:text-cyan-500 transition-colors text-sm sm:text-base inline-flex items-center gap-2 group">
+                  <a href="#about" className="text-slate-400 hover:text-cyan-500 transition-all duration-300 text-sm sm:text-base inline-flex items-center gap-2 group hover:translate-x-1">
                     <span className="h-0.5 w-0 bg-cyan-500 group-hover:w-2 transition-all duration-300 hidden sm:block"></span>
                     About
                   </a>
                 </li>
                 <li>
-                  <a href="#testimonials" className="text-slate-400 hover:text-cyan-500 transition-colors text-sm sm:text-base inline-flex items-center gap-2 group">
+                  <a href="#testimonials" className="text-slate-400 hover:text-cyan-500 transition-all duration-300 text-sm sm:text-base inline-flex items-center gap-2 group hover:translate-x-1">
                     <span className="h-0.5 w-0 bg-cyan-500 group-hover:w-2 transition-all duration-300 hidden sm:block"></span>
                     Testimonials
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="text-slate-400 hover:text-cyan-500 transition-colors text-sm sm:text-base inline-flex items-center gap-2 group">
+                  <a href="#contact" className="text-slate-400 hover:text-cyan-500 transition-all duration-300 text-sm sm:text-base inline-flex items-center gap-2 group hover:translate-x-1">
                     <span className="h-0.5 w-0 bg-cyan-500 group-hover:w-2 transition-all duration-300 hidden sm:block"></span>
                     Contact
                   </a>
@@ -130,10 +130,10 @@ export const Footer = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] text-white font-bold py-3.5 sm:py-4 rounded-2xl hover:shadow-lg hover:shadow-cyan-500/20 hover:scale-[1.02] transition-all active:scale-95 flex items-center justify-center gap-2 group text-sm sm:text-base"
+                  className="w-full bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] text-white font-bold py-3.5 sm:py-4 rounded-2xl hover:shadow-2xl hover:shadow-cyan-500/40 hover:scale-[1.05] transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 group text-sm sm:text-base"
                 >
                   <span>Subscribe Now</span>
-                  <i className="ri-send-plane-2-line group-hover:translate-x-1 transition-transform"></i>
+                  <i className="ri-send-plane-2-line group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"></i>
                 </button>
               </form>
             </div>

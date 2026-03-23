@@ -55,9 +55,9 @@ export const Contact = () => {
                     </select>
                     <i className="ri-arrow-down-s-line absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"></i>
                   </div>
-                  <button className="w-full bg-blue-600 text-white font-bold py-4 sm:py-5 rounded-xl hover:bg-blue-700 hover:shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-x-2 text-sm sm:text-base">
+                  <button className="w-full bg-blue-600 text-white font-bold py-4 sm:py-5 rounded-xl hover:bg-blue-700 hover:shadow-2xl hover:scale-105 transition-all active:scale-[0.98] flex items-center justify-center gap-x-2 text-sm sm:text-base duration-300">
                     <span>Request Callback</span>
-                    <i className="ri-arrow-right-line"></i>
+                    <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300"></i>
                   </button>
                 </div>
               </div>
@@ -67,9 +67,9 @@ export const Contact = () => {
           {/* Right Column: Info and Map */}
           <div className="flex-1 space-y-8 mt-4 lg:mt-0">
             <ScrollReveal direction="left">
-              <div className="bg-white border border-slate-100 shadow-xl rounded-[24px] md:rounded-[32px] p-6 sm:p-8 md:p-10 space-y-8 md:space-y-10">
-                <div className="flex gap-x-4 sm:gap-x-6 items-start">
-                  <div className="bg-cyan-50 text-cyan-500 h-10 w-10 sm:h-12 sm:w-12 rounded-xl flex items-center justify-center shrink-0">
+              <div className="bg-white border border-slate-100 shadow-xl rounded-[24px] md:rounded-[32px] p-6 sm:p-8 md:p-10 space-y-8 md:space-y-10 transition-all duration-500 hover:shadow-2xl hover:border-cyan-100/50">
+                <div className="group flex gap-x-4 sm:gap-x-6 items-start cursor-pointer">
+                  <div className="bg-cyan-50 text-cyan-500 h-10 w-10 sm:h-12 sm:w-12 rounded-xl flex items-center justify-center shrink-0 transition-all duration-500 group-hover:bg-cyan-500 group-hover:text-white group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-lg group-hover:shadow-cyan-200">
                     <i className="ri-map-pin-2-line text-lg sm:text-xl"></i>
                   </div>
                   <div className="space-y-1">
@@ -80,8 +80,8 @@ export const Contact = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-x-4 sm:gap-x-6 items-start">
-                  <div className="bg-cyan-50 text-cyan-500 h-10 w-10 sm:h-12 sm:w-12 rounded-xl flex items-center justify-center shrink-0">
+                <div className="group flex gap-x-4 sm:gap-x-6 items-start cursor-pointer">
+                  <div className="bg-cyan-50 text-cyan-500 h-10 w-10 sm:h-12 sm:w-12 rounded-xl flex items-center justify-center shrink-0 transition-all duration-500 group-hover:bg-cyan-500 group-hover:text-white group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-lg group-hover:shadow-cyan-200">
                     <i className="ri-phone-line text-lg sm:text-xl"></i>
                   </div>
                   <div className="space-y-1">
@@ -91,8 +91,8 @@ export const Contact = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-x-4 sm:gap-x-6 items-start">
-                  <div className="bg-cyan-50 text-cyan-500 h-10 w-10 sm:h-12 sm:w-12 rounded-xl flex items-center justify-center shrink-0">
+                <div className="group flex gap-x-4 sm:gap-x-6 items-start cursor-pointer">
+                  <div className="bg-cyan-50 text-cyan-500 h-10 w-10 sm:h-12 sm:w-12 rounded-xl flex items-center justify-center shrink-0 transition-all duration-500 group-hover:bg-cyan-500 group-hover:text-white group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-lg group-hover:shadow-cyan-200">
                     <i className="ri-mail-line text-lg sm:text-xl"></i>
                   </div>
                   <div className="space-y-1">
@@ -103,7 +103,8 @@ export const Contact = () => {
               </div>
 
               {/* Google Map */}
-              <div className="rounded-[24px] md:rounded-[32px] overflow-hidden border border-slate-100 shadow-md h-[250px] sm:h-[300px] md:h-[350px] relative mt-8 transform hover:scale-[1.01] transition-all duration-300">
+              <div className="rounded-[24px] md:rounded-[32px] overflow-hidden border border-slate-100 shadow-md h-[250px] sm:h-[300px] md:h-[350px] relative mt-8 transform hover:scale-[1.02] hover:shadow-2xl transition-all duration-500 group/map">
+                <div className="absolute inset-0 bg-cyan-900/5 group-hover/map:opacity-0 transition-opacity duration-500 pointer-events-none"></div>
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d221219.1707068451!2d77.556427!3d29.963633!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390eea921f841f45%3A0x39baf780903811f!2sSaharanpur%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1773827186265!5m2!1sen!2sin"
                   width="100%"

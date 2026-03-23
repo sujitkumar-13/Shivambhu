@@ -28,6 +28,9 @@ export const Navbar = () => {
             <Link href="/#services" className="text-slate-700 text-sm font-medium leading-5 ml-8 hover:text-cyan-600 transition-colors">
               Services
             </Link>
+            <Link href="/products" className="text-slate-700 text-sm font-medium leading-5 ml-8 hover:text-cyan-600 transition-colors">
+              Products
+            </Link>
             <Link href="/about" className="text-slate-700 text-sm font-medium leading-5 ml-8 hover:text-cyan-600 transition-colors">
               About
             </Link>
@@ -71,6 +74,13 @@ export const Navbar = () => {
               className="text-slate-700 font-medium py-3 px-4 rounded-xl hover:bg-cyan-50 hover:text-cyan-600 transition-colors"
             >
               Services
+            </Link>
+            <Link
+              href="/products"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-slate-700 font-medium py-3 px-4 rounded-xl hover:bg-cyan-50 hover:text-cyan-600 transition-colors"
+            >
+              Products
             </Link>
             <Link
               href="/about"

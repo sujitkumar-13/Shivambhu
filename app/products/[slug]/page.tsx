@@ -5,13 +5,13 @@ import { Navbar } from "../../../src/components/Navbar";
 import { Footer } from "../../../src/components/Footer";
 import { ScrollReveal } from "../../../src/components/ScrollReveal";
 import { useState, useMemo, useEffect } from "react";
-import { getProductBySlug } from "@/lib/actions";
+import { getProductBySlug, type Product } from "@/lib/actions";
 import Link from "next/link";
 
 export default function ProductDetailsPage() {
   const params = useParams();
   const productSlug = params.slug as string;
-  const [product, setProduct] = useState<any>(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [distance, setDistance] = useState(0);
   const [quantity, setQuantity] = useState(1);

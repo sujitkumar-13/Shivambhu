@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { getProducts } from "@/lib/actions";
+import { getProducts, type Product } from "@/lib/actions";
 import { ScrollReveal } from "./ScrollReveal";
 
 export function FeaturedProducts() {
@@ -33,7 +33,7 @@ export function FeaturedProducts() {
     return null;
   }
 
-  const handleBuyNow = (e: React.MouseEvent, product: any) => {
+  const handleBuyNow = (e: React.MouseEvent, product: Product) => {
     e.preventDefault();
     e.stopPropagation();
     

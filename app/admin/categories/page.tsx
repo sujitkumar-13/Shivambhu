@@ -1,14 +1,14 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { getCategories, createCategory, deleteCategory, updateCategory } from '@/lib/actions'
+import { getCategories, createCategory, deleteCategory, updateCategory, type Category } from '@/lib/actions'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function AdminCategoriesPage() {
-  const [categories, setCategories] = useState<any[]>([])
+  const [categories, setCategories] = useState<Category[]>([])
   const [loading, setLoading] = useState(true)
   const [newCategory, setNewCategory] = useState('')
-  const [editingCategory, setEditingCategory] = useState<any>(null)
+  const [editingCategory, setEditingCategory] = useState<Category | null>(null)
 
   useEffect(() => {
     fetchData()
@@ -27,7 +27,6 @@ export default function AdminCategoriesPage() {
     
     try {
       if (editingCategory) {
-        console.log('Updating category:', editingCategory.id, newCategory.trim())
         await updateCategory(editingCategory.id, newCategory.trim())
         setEditingCategory(null)
       } else {
@@ -50,7 +49,7 @@ export default function AdminCategoriesPage() {
     }
   }
 
-  const startEdit = (cat: any) => {
+  const startEdit = (cat: Category) => {
     setEditingCategory(cat)
     setNewCategory(cat.name)
     window.scrollTo({ top: 0, behavior: 'smooth' })

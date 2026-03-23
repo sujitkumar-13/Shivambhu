@@ -14,6 +14,8 @@ export async function POST(request: Request) {
     const envPassword = process.env.ADMIN_PASSWORD
 
     if (email !== envEmail || password !== envPassword) {
+      // Add delay to mitigate brute force
+      await new Promise(resolve => setTimeout(resolve, 1000))
       return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 })
     }
 

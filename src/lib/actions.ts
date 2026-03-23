@@ -1,9 +1,89 @@
 'use server'
 
-import prisma, { sql } from './prisma'
+import { sql } from './prisma'
 import { revalidatePath } from 'next/cache'
+import { cookies } from 'next/headers'
+import { jwtVerify } from 'jose'
 
-// Helper to generate slug from name
+const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET || 'supersafesecret123')
+
+async function verifyAdminSession() {
+  const cookieStore = await cookies()
+  const token = cookieStore.get('admin_token')?.value
+
+  if (!token) {
+    throw new Error('Unauthorized: No token found')
+  }
+
+  try {
+    const { payload } = await jwtVerify(token, JWT_SECRET)
+    if (payload.role !== 'admin') {
+      throw new Error('Forbidden: Insufficient permissions')
+    }
+  } catch (error) {
+    throw new Error('Unauthorized: Invalid or expired token')
+  }
+}
+
+function validateInput(data: Record<string, any>, fields: string[]) {
+  for (const field of fields) {
+    const value = data[field]
+    if (value === undefined || value === null || (typeof value === 'string' && value.trim() === '')) {
+      throw new Error(`Validation Error: ${field} is required`)
+    }
+  }
+}
+
+// --- Types ---
+export interface Category {
+  id: string;
+  name: string;
+  createdAt?: Date;
+}
+
+export interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+  slug: string;
+  categoryName: string;
+  rating: number;
+  stock: number;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  role: string;
+  content: string;
+  image: string | null;
+  rating: number;
+  createdAt?: Date;
+}
+
+export interface ProductInput {
+  name: string;
+  description: string;
+  price: string | number;
+  image: string;
+  categoryName: string;
+  rating?: string | number;
+  stock?: string | number;
+}
+
+export interface TestimonialInput {
+  name: string;
+  role: string;
+  content: string;
+  image: string | null;
+  rating?: string | number;
+}
+
+// --- Helpers ---
 function generateSlug(name: string) {
   return name
     .toLowerCase()
@@ -14,14 +94,17 @@ function generateSlug(name: string) {
 }
 
 // --- Categories ---
-export async function getCategories() {
+export async function getCategories(): Promise<Category[]> {
   const result = await sql`SELECT * FROM "Category" ORDER BY name ASC`
-  return result
+  return result as Category[]
 }
 
 export async function createCategory(name: string) {
+  await verifyAdminSession()
+  if (!name || name.trim() === '') throw new Error('Category name is required')
+
   const normalizedName = name.toUpperCase()
-  const id = `cl${Math.random().toString(36).substring(2, 11)}` // Simple CUID-like ID
+  const id = `cl${Math.random().toString(36).substring(2, 11)}`
   
   await sql`
     INSERT INTO "Category" (id, name, "createdAt")
@@ -33,15 +116,13 @@ export async function createCategory(name: string) {
 }
 
 export async function updateCategory(id: string, name: string) {
+  await verifyAdminSession()
+  if (!id || !name || name.trim() === '') throw new Error('ID and Category name are required')
+
   const normalizedName = name.toUpperCase()
-  
-  // Get old name first to update products
-  const [oldCat]: any = await sql`SELECT name FROM "Category" WHERE id = ${id} LIMIT 1`
+  const [oldCat] = await sql`SELECT name FROM "Category" WHERE id = ${id} LIMIT 1` as Category[]
   
   if (oldCat) {
-    // Update products first to maintain reference if needed (or do it in a transaction)
-    // Actually, in Postgres, if it's a FK on name, we should update both.
-    // The most reliable way is to update Category and then Products.
     await sql`UPDATE "Category" SET name = ${normalizedName} WHERE id = ${id}`
     await sql`UPDATE "Product" SET "categoryName" = ${normalizedName} WHERE "categoryName" = ${oldCat.name}`
   }
@@ -51,33 +132,35 @@ export async function updateCategory(id: string, name: string) {
 }
 
 export async function deleteCategory(id: string) {
-  // First delete products in category or the DB might complain? 
-  // Actually, let's just delete the category.
+  await verifyAdminSession()
   await sql`DELETE FROM "Category" WHERE id = ${id}`
   revalidatePath('/admin/categories')
 }
 
-export async function getProductById(id: string) {
-  const [product] = await sql`SELECT * FROM "Product" WHERE id = ${id} LIMIT 1`
-  return product
-}
-
 // --- Products ---
-export async function getProducts() {
-  return await sql`SELECT * FROM "Product" ORDER BY "createdAt" DESC`
-}
-
-export async function getProductBySlug(slug: string) {
-  const [product] = await sql`SELECT * FROM "Product" WHERE slug = ${slug} LIMIT 1`
+export async function getProductById(id: string): Promise<Product | undefined> {
+  const [product] = await sql`SELECT * FROM "Product" WHERE id = ${id} LIMIT 1` as Product[]
   return product
 }
 
-export async function createProduct(data: any) {
+export async function getProducts(): Promise<Product[]> {
+  return await sql`SELECT * FROM "Product" ORDER BY "createdAt" DESC` as Product[]
+}
+
+export async function getProductBySlug(slug: string): Promise<Product | undefined> {
+  const [product] = await sql`SELECT * FROM "Product" WHERE slug = ${slug} LIMIT 1` as Product[]
+  return product
+}
+
+export async function createProduct(data: ProductInput) {
+  await verifyAdminSession()
+  validateInput(data, ['name', 'description', 'price', 'categoryName', 'image'])
+
   const id = `cl${Math.random().toString(36).substring(2, 11)}`
-  const slug = generateSlug(data.name)
-  const price = parseFloat(data.price)
-  const rating = parseFloat(data.rating || '5.0')
-  const stock = parseInt(data.stock || '0')
+  const slug = generateSlug(data.name || '')
+  const price = typeof data.price === 'string' ? parseFloat(data.price) : (data.price || 0)
+  const rating = typeof data.rating === 'string' ? parseFloat(data.rating) : (data.rating || 5.0)
+  const stock = typeof data.stock === 'string' ? parseInt(data.stock) : (data.stock || 0)
 
   await sql`
     INSERT INTO "Product" (id, name, description, price, image, slug, "categoryName", rating, stock, "createdAt", "updatedAt")
@@ -89,11 +172,14 @@ export async function createProduct(data: any) {
   return { id, slug, ...data }
 }
 
-export async function updateProduct(id: string, data: any) {
-  const price = parseFloat(data.price)
-  const rating = parseFloat(data.rating || '5.0')
-  const stock = parseInt(data.stock || '0')
-  const slug = generateSlug(data.name)
+export async function updateProduct(id: string, data: ProductInput) {
+  await verifyAdminSession()
+  validateInput(data, ['name', 'description', 'price', 'categoryName', 'image'])
+
+  const price = typeof data.price === 'string' ? parseFloat(data.price) : (data.price || 0)
+  const rating = typeof data.rating === 'string' ? parseFloat(data.rating) : (data.rating || 5.0)
+  const stock = typeof data.stock === 'string' ? parseInt(data.stock) : (data.stock || 0)
+  const slug = generateSlug(data.name || '')
 
   await sql`
     UPDATE "Product"
@@ -117,19 +203,23 @@ export async function updateProduct(id: string, data: any) {
 }
 
 export async function deleteProduct(id: string) {
+  await verifyAdminSession()
   await sql`DELETE FROM "Product" WHERE id = ${id}`
   revalidatePath('/admin/products')
   revalidatePath('/products')
 }
 
 // --- Testimonials ---
-export async function getTestimonials() {
-  return await sql`SELECT * FROM "Testimonial" ORDER BY "createdAt" DESC`
+export async function getTestimonials(): Promise<Testimonial[]> {
+  return await sql`SELECT * FROM "Testimonial" ORDER BY "createdAt" DESC` as Testimonial[]
 }
 
-export async function createTestimonial(data: any) {
+export async function createTestimonial(data: TestimonialInput) {
+  await verifyAdminSession()
+  validateInput(data, ['name', 'role', 'content'])
+
   const id = `cl${Math.random().toString(36).substring(2, 11)}`
-  const rating = parseInt(data.rating || '5')
+  const rating = typeof data.rating === 'string' ? parseInt(data.rating) : (data.rating || 5)
 
   await sql`
     INSERT INTO "Testimonial" (id, name, role, content, image, rating, "createdAt")
@@ -141,8 +231,11 @@ export async function createTestimonial(data: any) {
   return { id, ...data }
 }
 
-export async function updateTestimonial(id: string, data: any) {
-  const rating = parseInt(data.rating || '5')
+export async function updateTestimonial(id: string, data: TestimonialInput) {
+  await verifyAdminSession()
+  validateInput(data, ['name', 'role', 'content'])
+
+  const rating = typeof data.rating === 'string' ? parseInt(data.rating) : (data.rating || 5)
 
   await sql`
     UPDATE "Testimonial"
@@ -161,7 +254,9 @@ export async function updateTestimonial(id: string, data: any) {
 }
 
 export async function deleteTestimonial(id: string) {
+  await verifyAdminSession()
   await sql`DELETE FROM "Testimonial" WHERE id = ${id}`
   revalidatePath('/admin/testimonials')
   revalidatePath('/')
 }
+

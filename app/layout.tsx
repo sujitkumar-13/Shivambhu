@@ -10,6 +10,10 @@ export const metadata: Metadata = {
   keywords: ["RO Water", "Mineral Water", "Purified Water", "Saharanpur", "Water Delivery", "Shivambhu Water"],
   authors: [{ name: "Shivambhu Team" }],
   robots: "index, follow",
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export const viewport = {

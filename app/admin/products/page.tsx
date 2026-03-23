@@ -1,15 +1,15 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { getProducts, getCategories, createProduct, updateProduct, deleteProduct } from '@/lib/actions'
+import { getProducts, getCategories, createProduct, updateProduct, deleteProduct, type Product, type Category } from '@/lib/actions'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function AdminProductsPage() {
-  const [products, setProducts] = useState<any[]>([])
-  const [categories, setCategories] = useState<any[]>([])
+  const [products, setProducts] = useState<Product[]>([])
+  const [categories, setCategories] = useState<Category[]>([])
   const [loading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
-  const [editingProduct, setEditingProduct] = useState<any>(null)
+  const [editingProduct, setEditingProduct] = useState<Product | null>(null)
   const [uploading, setUploading] = useState(false)
   
   // Form State
@@ -48,7 +48,7 @@ export default function AdminProductsPage() {
     setFormData({ name: '', description: '', price: '', categoryName: '', image: '', rating: '5.0', stock: '0' })
   }
 
-  const handleEdit = (product: any) => {
+  const handleEdit = (product: Product) => {
     setEditingProduct(product)
     setFormData({
       name: product.name,

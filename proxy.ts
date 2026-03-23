@@ -20,7 +20,10 @@ export async function proxy(request: NextRequest) {
       return NextResponse.next()
     } catch (error) {
       console.error('JWT verification failed:', error)
-      return NextResponse.redirect(new URL('/admin/login', request.url))
+      // Clear invalid token
+      const response = NextResponse.redirect(new URL('/admin/login', request.url))
+      response.cookies.delete('admin_token')
+      return response
     }
   }
 

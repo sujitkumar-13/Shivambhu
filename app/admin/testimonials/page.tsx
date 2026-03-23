@@ -1,14 +1,14 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { getTestimonials, createTestimonial, deleteTestimonial, updateTestimonial } from '@/lib/actions'
+import { getTestimonials, createTestimonial, deleteTestimonial, updateTestimonial, type Testimonial } from '@/lib/actions'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function AdminTestimonialsPage() {
-  const [testimonials, setTestimonials] = useState<any[]>([])
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([])
   const [loading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
-  const [editingTestimonial, setEditingTestimonial] = useState<any>(null)
+  const [editingTestimonial, setEditingTestimonial] = useState<Testimonial | null>(null)
 
   const [formData, setFormData] = useState({
     name: '',
@@ -70,7 +70,7 @@ export default function AdminTestimonialsPage() {
     setFormData({ name: '', role: '', content: '', image: '', rating: '5' })
   }
 
-  const handleEdit = (t: any) => {
+  const handleEdit = (t: Testimonial) => {
     setEditingTestimonial(t)
     setFormData({
       name: t.name,

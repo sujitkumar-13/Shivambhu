@@ -5,7 +5,7 @@ import { Footer } from "../../src/components/Footer";
 import { ScrollReveal } from "../../src/components/ScrollReveal";
 import Link from "next/link";
 import { useState, useMemo, useEffect } from "react";
-import { getProducts, getCategories } from "@/lib/actions";
+import { getProducts, getCategories, type Product } from "@/lib/actions";
 
 export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -36,7 +36,7 @@ export default function ProductsPage() {
     });
   }, [searchQuery, activeCategory, products]);
 
-  const handleBuyNow = (e: React.MouseEvent, product: any) => {
+  const handleBuyNow = (e: React.MouseEvent, product: Product) => {
     e.preventDefault();
     e.stopPropagation();
     

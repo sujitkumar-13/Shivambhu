@@ -10,7 +10,7 @@ export const About = () => {
           {/* Left Side: Content */}
           <div className="flex-1 order-2 lg:order-1">
             <ScrollReveal direction="right">
-              <span className="bg-cyan-50 border border-cyan-100 text-cyan-600 text-sm font-bold px-5 py-2.5 rounded-full mt-5 md:mt-0 mb-6 md:mb-8 inline-block tracking-wide uppercase">
+              <span className="bg-cyan-50 border border-cyan-100 text-cyan-600 text-sm font-bold px-5 py-2.5 rounded-full mt-5 md:mt-0 mb-6 md:mb-8 inline-block tracking-wide uppercase transition-all duration-300 hover:scale-110 hover:bg-cyan-100 cursor-default">
                 About Shivambhu
               </span>
               <h2 className="text-slate-800 text-3xl font-bold leading-[1.2] mb-6 sm:text-4xl md:text-5xl lg:text-6xl lg:leading-[1.1]">
@@ -31,7 +31,7 @@ export const About = () => {
               <div className="flex justify-center lg:justify-start">
                 <a
                   href="#"
-                  className="mt-10 items-center text-cyan-600 inline-flex font-bold gap-x-2 text-base md:text-xl hover:gap-x-4 transition-all group"
+                  className="mt-10 items-center text-cyan-600 inline-flex font-bold gap-x-2 text-base md:text-xl hover:gap-x-4 transition-all group pb-2 border-b-2 border-transparent hover:border-cyan-600"
                 >
                   <span>Visit Our Plant</span>
                   <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform"></i>

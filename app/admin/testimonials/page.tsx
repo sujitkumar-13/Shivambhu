@@ -110,7 +110,7 @@ export default function AdminTestimonialsPage() {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
         {loading && testimonials.length === 0 ? (
           <div className="col-span-full flex items-center justify-center p-20">
             <div className="w-10 h-10 border-4 border-cyan-100 border-t-cyan-500 rounded-full animate-spin"></div>

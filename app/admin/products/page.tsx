@@ -140,11 +140,6 @@ export default function AdminProductsPage() {
                   <div className="font-bold text-slate-800 text-sm leading-snug truncate">{product.name}</div>
                   <div className="flex items-center gap-2 mt-1 flex-wrap">
                     <span className="font-bold text-slate-800 text-sm">₹{product.price}</span>
-                    <span className="w-1 h-1 rounded-full bg-slate-300 inline-block"></span>
-                    <span className="flex items-center gap-1 text-[11px] font-bold text-amber-500">
-                      <span className="w-3 h-3 rounded-full bg-amber-400 inline-block"></span>
-                      {product.stock} RC
-                    </span>
                   </div>
                 </div>
               </div>

@@ -64,10 +64,10 @@ export default function AdminCategoriesPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-10">
         {/* Category Form */}
-        <div className="lg:col-span-1">
-          <div className="bg-white p-5 lg:p-8 rounded-[1.5rem] lg:rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-100/50 lg:sticky lg:top-32">
+        <div className="xl:col-span-1">
+          <div className="bg-white p-5 lg:p-8 rounded-[1.5rem] lg:rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-100/50 xl:sticky xl:top-32">
             <h3 className="text-lg font-bold text-slate-800 uppercase tracking-wider mb-6">
               {editingCategory ? 'Update Category' : 'Create New Category'}
             </h3>
@@ -109,7 +109,7 @@ export default function AdminCategoriesPage() {
         </div>
 
         {/* Categories List */}
-        <div className="lg:col-span-2 space-y-4">
+        <div className="xl:col-span-2 space-y-4">
           {loading && categories.length === 0 ? (
             <div className="flex items-center justify-center p-20">
               <div className="w-10 h-10 border-4 border-cyan-100 border-t-cyan-500 rounded-full animate-spin"></div>

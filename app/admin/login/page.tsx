@@ -27,6 +27,7 @@ export default function AdminLoginPage() {
       const data = await res.json()
 
       if (res.ok) {
+        sessionStorage.setItem('adminActive', 'true')
         router.push('/admin/products')
       } else {
         setError(data.error || 'Login failed')

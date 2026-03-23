@@ -10,6 +10,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const router = useRouter()
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
+  useEffect(() => {
+    if (pathname !== '/admin/login') {
+      const isActive = sessionStorage.getItem('adminActive')
+      if (!isActive) {
+        router.replace('/admin/login')
+      }
+    }
+  }, [pathname, router])
+
   const menuItems = [
     { name: 'Products', icon: 'ri-water-flash-line', path: '/admin/products' },
     { name: 'Categories', icon: 'ri-price-tag-3-line', path: '/admin/categories' },
@@ -17,6 +26,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   ]
 
   const handleLogout = async () => {
+    sessionStorage.removeItem('adminActive')
     await fetch('/api/admin/logout', { method: 'POST' })
     router.push('/admin/login')
   }

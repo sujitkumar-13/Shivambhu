@@ -99,10 +99,10 @@ export default function AdminProductsPage() {
 
   return (
     <div className="space-y-10">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-slate-800">Products Catalog</h1>
-          <p className="text-sm md:text-base text-slate-500 mt-1 font-medium">Manage your product inventory and pricing</p>
+          <h1 className="text-2xl lg:text-3xl font-bold text-slate-800">Products Catalog</h1>
+          <p className="text-sm lg:text-base text-slate-500 mt-1 font-medium">Manage your product inventory and pricing</p>
         </div>
         <button
           onClick={() => {
@@ -110,7 +110,7 @@ export default function AdminProductsPage() {
             setFormData({ name: '', description: '', price: '', categoryName: '', image: '', rating: '5.0', stock: '0' })
             setShowModal(true)
           }}
-          className="bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] text-white px-6 py-3 md:px-8 md:py-4 rounded-xl md:rounded-2xl font-bold text-sm shadow-xl shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:-translate-y-1 transition-all active:scale-95 flex items-center justify-center md:justify-start gap-2 w-full md:w-auto"
+          className="bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] text-white px-6 py-3 lg:px-8 lg:py-4 rounded-xl lg:rounded-2xl font-bold text-sm shadow-xl shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:-translate-y-1 transition-all active:scale-95 flex items-center justify-center lg:justify-start gap-2 w-full lg:w-auto"
         >
           <i className="ri-add-line text-lg"></i>
           Add New Product
@@ -192,14 +192,14 @@ export default function AdminProductsPage() {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-2xl bg-white rounded-[1.5rem] md:rounded-[2.5rem] shadow-2xl p-6 md:p-10 z-[70] max-h-[90vh] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              className="relative w-full max-w-2xl bg-white rounded-[1.5rem] lg:rounded-[2.5rem] shadow-2xl p-6 lg:p-10 z-[70] max-h-[90vh] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
             >
-              <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-6 md:mb-8 uppercase tracking-wider">
+              <h2 className="text-xl lg:text-2xl font-bold text-slate-800 mb-6 lg:mb-8 uppercase tracking-wider">
                 {editingProduct ? 'Edit Product' : 'Add New Product'}
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-slate-700 font-bold text-[10px] uppercase tracking-widest ml-1">Product Name</label>
                     <input

@@ -24,7 +24,7 @@ export default function AdminCategoriesPage() {
     e.preventDefault()
     if (!newCategory.trim()) return
     setLoading(true)
-    
+
     try {
       if (editingCategory) {
         await updateCategory(editingCategory.id, newCategory.trim())
@@ -57,17 +57,17 @@ export default function AdminCategoriesPage() {
 
   return (
     <div className="space-y-10">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-slate-800">Product Categories</h1>
-          <p className="text-sm md:text-base text-slate-500 mt-1 font-medium">Define and organize your product types</p>
+          <h1 className="text-2xl lg:text-3xl font-bold text-slate-800">Product Categories</h1>
+          <p className="text-sm lg:text-base text-slate-500 mt-1 font-medium">Define and organize your product types</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10">
         {/* Category Form */}
         <div className="lg:col-span-1">
-          <div className="bg-white p-5 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-100/50 lg:sticky lg:top-32">
+          <div className="bg-white p-5 lg:p-8 rounded-[1.5rem] lg:rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-100/50 lg:sticky lg:top-32">
             <h3 className="text-lg font-bold text-slate-800 uppercase tracking-wider mb-6">
               {editingCategory ? 'Update Category' : 'Create New Category'}
             </h3>
@@ -84,7 +84,7 @@ export default function AdminCategoriesPage() {
                 />
               </div>
               <div className="flex gap-3">
-                <button 
+                <button
                   type="submit"
                   disabled={loading}
                   className="flex-1 bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] text-white font-bold py-5 rounded-2xl shadow-xl shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:-translate-y-1 transition-all active:scale-95 disabled:opacity-70"
@@ -92,7 +92,7 @@ export default function AdminCategoriesPage() {
                   {loading ? (editingCategory ? 'Updating...' : 'Creating...') : (editingCategory ? 'Update' : 'Add Category')}
                 </button>
                 {editingCategory && (
-                  <button 
+                  <button
                     type="button"
                     onClick={() => {
                       setEditingCategory(null)
@@ -110,44 +110,44 @@ export default function AdminCategoriesPage() {
 
         {/* Categories List */}
         <div className="lg:col-span-2 space-y-4">
-           {loading && categories.length === 0 ? (
-             <div className="flex items-center justify-center p-20">
-               <div className="w-10 h-10 border-4 border-cyan-100 border-t-cyan-500 rounded-full animate-spin"></div>
-             </div>
-           ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {categories.map((cat) => (
-                  <motion.div 
-                    layout
-                    key={cat.id}
-                    className="bg-white p-4 md:p-6 rounded-2xl md:rounded-3xl border border-slate-100 shadow-lg shadow-slate-100/50 flex items-center justify-between group hover:border-cyan-200 transition-colors"
-                  >
-                    <div className="flex items-center gap-3 md:gap-4 overflow-hidden">
-                       <div className="w-10 h-10 md:w-12 md:h-12 bg-cyan-50 text-cyan-600 rounded-xl flex items-center justify-center font-bold text-lg flex-shrink-0">
-                          <i className="ri-price-tag-3-line"></i>
-                       </div>
-                       <span className="font-bold text-slate-700 uppercase tracking-wider truncate text-sm md:text-base">{cat.name}</span>
+          {loading && categories.length === 0 ? (
+            <div className="flex items-center justify-center p-20">
+              <div className="w-10 h-10 border-4 border-cyan-100 border-t-cyan-500 rounded-full animate-spin"></div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {categories.map((cat) => (
+                <motion.div
+                  layout
+                  key={cat.id}
+                  className="bg-white p-4 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 shadow-lg shadow-slate-100/50 flex items-center justify-between group hover:border-cyan-200 transition-colors"
+                >
+                  <div className="flex items-center gap-3 lg:gap-4 overflow-hidden">
+                    <div className="w-10 h-10 lg:w-12 lg:h-12 bg-cyan-50 text-cyan-600 rounded-xl flex items-center justify-center font-bold text-lg flex-shrink-0">
+                      <i className="ri-price-tag-3-line"></i>
                     </div>
-                    <div className="flex items-center gap-1 flex-shrink-0">
-                      <button 
-                        onClick={() => startEdit(cat)}
-                        className="p-2 md:p-3 text-slate-400 md:text-slate-300 hover:text-cyan-600 hover:bg-cyan-50 rounded-xl transition-all md:opacity-0 md:group-hover:opacity-100"
-                        title="Edit"
-                      >
-                         <i className="ri-pencil-line text-lg"></i>
-                      </button>
-                      <button 
-                        onClick={() => handleDelete(cat.id)}
-                        className="p-2 md:p-3 text-slate-400 md:text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all md:opacity-0 md:group-hover:opacity-100"
-                        title="Delete"
-                      >
-                         <i className="ri-delete-bin-line text-lg"></i>
-                      </button>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-           )}
+                    <span className="font-bold text-slate-700 uppercase tracking-wider truncate text-sm lg:text-base">{cat.name}</span>
+                  </div>
+                  <div className="flex items-center gap-1 flex-shrink-0">
+                    <button
+                      onClick={() => startEdit(cat)}
+                      className="p-2 lg:p-3 text-slate-400 lg:text-slate-300 hover:text-cyan-600 hover:bg-cyan-50 rounded-xl transition-all lg:opacity-0 lg:group-hover:opacity-100"
+                      title="Edit"
+                    >
+                      <i className="ri-pencil-line text-lg"></i>
+                    </button>
+                    <button
+                      onClick={() => handleDelete(cat.id)}
+                      className="p-2 lg:p-3 text-slate-400 lg:text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all lg:opacity-0 lg:group-hover:opacity-100"
+                      title="Delete"
+                    >
+                      <i className="ri-delete-bin-line text-lg"></i>
+                    </button>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

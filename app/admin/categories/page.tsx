@@ -59,15 +59,15 @@ export default function AdminCategoriesPage() {
     <div className="space-y-10">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-slate-800">Product Categories</h1>
-          <p className="text-slate-500 mt-1 font-medium">Define and organize your product types</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-slate-800">Product Categories</h1>
+          <p className="text-sm md:text-base text-slate-500 mt-1 font-medium">Define and organize your product types</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-10">
         {/* Category Form */}
         <div className="lg:col-span-1">
-          <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-100/50 sticky top-32">
+          <div className="bg-white p-5 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-100/50 lg:sticky lg:top-32">
             <h3 className="text-lg font-bold text-slate-800 uppercase tracking-wider mb-6">
               {editingCategory ? 'Update Category' : 'Create New Category'}
             </h3>
@@ -115,36 +115,38 @@ export default function AdminCategoriesPage() {
                <div className="w-10 h-10 border-4 border-cyan-100 border-t-cyan-500 rounded-full animate-spin"></div>
              </div>
            ) : (
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-               {categories.map((cat) => (
-                 <motion.div 
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {categories.map((cat) => (
+                  <motion.div 
                     layout
                     key={cat.id}
-                    className="bg-white p-6 rounded-3xl border border-slate-100 shadow-lg shadow-slate-100/50 flex items-center justify-between group hover:border-cyan-200 transition-colors"
-                 >
-                    <div className="flex items-center gap-4">
-                       <div className="w-10 h-10 bg-cyan-50 text-cyan-600 rounded-xl flex items-center justify-center font-bold text-lg">
+                    className="bg-white p-4 md:p-6 rounded-2xl md:rounded-3xl border border-slate-100 shadow-lg shadow-slate-100/50 flex items-center justify-between group hover:border-cyan-200 transition-colors"
+                  >
+                    <div className="flex items-center gap-3 md:gap-4 overflow-hidden">
+                       <div className="w-10 h-10 md:w-12 md:h-12 bg-cyan-50 text-cyan-600 rounded-xl flex items-center justify-center font-bold text-lg flex-shrink-0">
                           <i className="ri-price-tag-3-line"></i>
                        </div>
-                       <span className="font-bold text-slate-700 uppercase tracking-wider">{cat.name}</span>
+                       <span className="font-bold text-slate-700 uppercase tracking-wider truncate text-sm md:text-base">{cat.name}</span>
                     </div>
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 flex-shrink-0">
                       <button 
                         onClick={() => startEdit(cat)}
-                        className="p-3 text-slate-300 hover:text-cyan-600 hover:bg-cyan-50 rounded-xl transition-all opacity-0 group-hover:opacity-100"
+                        className="p-2 md:p-3 text-slate-400 md:text-slate-300 hover:text-cyan-600 hover:bg-cyan-50 rounded-xl transition-all md:opacity-0 md:group-hover:opacity-100"
+                        title="Edit"
                       >
                          <i className="ri-pencil-line text-lg"></i>
                       </button>
                       <button 
                         onClick={() => handleDelete(cat.id)}
-                        className="p-3 text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all opacity-0 group-hover:opacity-100"
+                        className="p-2 md:p-3 text-slate-400 md:text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all md:opacity-0 md:group-hover:opacity-100"
+                        title="Delete"
                       >
                          <i className="ri-delete-bin-line text-lg"></i>
                       </button>
                     </div>
-                 </motion.div>
-               ))}
-             </div>
+                  </motion.div>
+                ))}
+              </div>
            )}
         </div>
       </div>

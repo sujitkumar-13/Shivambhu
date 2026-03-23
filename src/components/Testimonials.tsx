@@ -1,58 +1,27 @@
 import { useState, useRef, useEffect } from "react"
 import { ScrollReveal } from "./ScrollReveal"
-import rajesh from "../assets/testimonials/rajesh.png"
-import priya from "../assets/testimonials/priya.png"
-import amit from "../assets/testimonials/amit.png"
-import sunita from "../assets/testimonials/sunita.png"
-import vikram from "../assets/testimonials/vikram.png"
-import neha from "../assets/testimonials/neha.png"
+import { getTestimonials } from "@/lib/actions"
 
 export const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [testimonials, setTestimonials] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const testimonials = [
-    {
-      name: "Rajesh Kumar",
-      location: "Saharanpur",
-      image: rajesh.src,
-      text: "The water quality is exceptional! Since switching to Shivambhu, my family's health has improved significantly. Highly recommended for every household.",
-    },
-    {
-      name: "Priya Sharma",
-      location: "Saharanpur",
-      image: priya.src,
-      text: "Their home delivery service is prompt and reliable. The water tastes pure and fresh. Best RO water service in Saharanpur without any doubt.",
-    },
-    {
-      name: "Amit Gupta",
-      location: "Saharanpur",
-      image: amit.src,
-      text: "Excellent installation service! The technician was professional and explained everything clearly. Our RO system works perfectly.",
-    },
-    {
-      name: "Sunita Devi",
-      location: "Saharanpur",
-      image: sunita.src,
-      text: "I've been using their AMC service for 2 years now. Regular maintenance keeps our RO running smoothly. Great value for money!",
-    },
-    {
-      name: "Vikram Singh",
-      location: "Saharanpur",
-      image: vikram.src,
-      text: "The water testing service revealed important insights about our water quality. Now we drink with complete confidence. Thank you Shivambhu!",
-    },
-    {
-      name: "Neha Patel",
-      location: "Saharanpur",
-      image: neha.src,
-      text: "Outstanding customer support! They resolved my query within hours. The water purity is unmatched. Truly the best in Saharanpur.",
-    },
-  ];
+  useEffect(() => {
+    async function fetchData() {
+      const t = await getTestimonials();
+      setTestimonials(t);
+      setLoading(false);
+    }
+    fetchData();
+  }, []);
 
   const isAutoScrolling = useRef(false);
 
   useEffect(() => {
+    if (testimonials.length === 0) return;
+
     const timer = setInterval(() => {
       isAutoScrolling.current = true;
       setActiveIndex((prev) => (prev + 1) % testimonials.length);
@@ -127,43 +96,55 @@ export const Testimonials = () => {
 
         {/* Infinite Scroll Container */}
         <div className="relative flex overflow-hidden">
-          <div className="flex animate-infinite-scroll gap-6 md:gap-8 pb-10">
-            {/* First set of testimonials */}
-            {[...testimonials, ...testimonials].map((testimonial, index) => (
-              <div 
-                key={index} 
-                className="w-[350px] sm:w-[450px] md:w-[500px] shrink-0"
-              >
-                <div className="group bg-white shadow-sm hover:shadow-xl border border-slate-100 p-8 md:p-10 rounded-[2.5rem] h-full transition-all duration-500 hover:-translate-y-2">
-                  <div className="items-center flex mb-6">
-                    <div className="flex text-yellow-400 gap-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <i key={i} className="ri-star-fill text-sm"></i>
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-8 italic">
-                    "{testimonial.text}"
-                  </p>
-                  <div className="items-center flex mt-auto">
-                    <img
-                      alt={testimonial.name}
-                      src={testimonial.image}
-                      className="h-12 w-12 object-cover rounded-full border-2 border-slate-50 shrink-0 transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="ml-4">
-                      <div className="text-slate-800 font-bold text-base group-hover:text-cyan-600 transition-colors duration-300">
-                        {testimonial.name}
+          {loading ? (
+             <div className="flex items-center justify-center w-full py-20">
+                <div className="w-10 h-10 border-4 border-cyan-100 border-t-cyan-500 rounded-full animate-spin"></div>
+             </div>
+          ) : (
+            <div className="flex animate-infinite-scroll gap-6 md:gap-8 pb-10">
+              {/* Double the list for infinite effect */}
+              {[...testimonials, ...testimonials].map((testimonial, index) => (
+                <div 
+                  key={index} 
+                  className="w-[350px] sm:w-[450px] md:w-[500px] shrink-0"
+                >
+                  <div className="group bg-white shadow-sm hover:shadow-xl border border-slate-100 p-8 md:p-10 rounded-[2.5rem] h-full transition-all duration-500 hover:-translate-y-2">
+                    <div className="items-center flex mb-6">
+                      <div className="flex text-yellow-400 gap-x-1">
+                        {[...Array(5)].map((_, i) => (
+    <i key={i} className={`ri-star-fill text-sm ${i < testimonial.rating ? 'text-yellow-400' : 'text-slate-200'}`}></i>
+  ))}
                       </div>
-                      <div className="text-slate-500 text-sm leading-5">
-                        {testimonial.location}
+                    </div>
+                    <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-8 italic">
+                      "{testimonial.content}"
+                    </p>
+                    <div className="items-center flex mt-auto">
+                      {testimonial.image ? (
+                        <img
+                          alt={testimonial.name}
+                          src={testimonial.image}
+                          className="h-12 w-12 object-cover rounded-full border-2 border-slate-50 shrink-0 transition-transform duration-500 group-hover:scale-110"
+                        />
+                      ) : (
+                        <div className="h-12 w-12 rounded-full border-2 border-slate-50 shrink-0 bg-cyan-50 flex items-center justify-center font-bold text-cyan-600 uppercase">
+                          {testimonial.name.charAt(0)}
+                        </div>
+                      )}
+                      <div className="ml-4">
+                        <div className="text-slate-800 font-bold text-base group-hover:text-cyan-600 transition-colors duration-300">
+                          {testimonial.name}
+                        </div>
+                        <div className="text-slate-500 text-sm leading-5 uppercase tracking-widest font-bold text-[10px]">
+                          {testimonial.role}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           {/* Gradient Overlays for smooth edges */}
           <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-slate-50 to-transparent z-10"></div>

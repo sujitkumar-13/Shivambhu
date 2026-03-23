@@ -4,22 +4,37 @@ import { Navbar } from "../../src/components/Navbar";
 import { Footer } from "../../src/components/Footer";
 import { ScrollReveal } from "../../src/components/ScrollReveal";
 import Link from "next/link";
-import { products } from "../../src/data/products";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { getProducts, getCategories } from "@/lib/actions";
 
 export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const categories = ["All", "Fertilizers", "Energy", "Fuel", "Agriculture", "Bio-Products", "WATER", "MAINTENANCE", "HEALTH"];
+  const [products, setProducts] = useState<any[]>([]);
+  const [categories, setCategories] = useState<string[]>(["All"]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      const [allProducts, allCategories] = await Promise.all([
+        getProducts(),
+        getCategories()
+      ]);
+      setProducts(allProducts);
+      setCategories(["All", ...allCategories.map(c => c.name)]);
+      setLoading(false);
+    }
+    fetchData();
+  }, []);
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
       const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                            product.description.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesCategory = activeCategory === "All" || product.category === activeCategory.toUpperCase();
+      const matchesCategory = activeCategory === "All" || product.categoryName === activeCategory;
       return matchesSearch && matchesCategory;
     });
-  }, [searchQuery, activeCategory]);
+  }, [searchQuery, activeCategory, products]);
 
   return (
     <div className="font-inter">
@@ -74,7 +89,11 @@ export default function ProductsPage() {
           </ScrollReveal>
 
           {/* Product Grid */}
-          {filteredProducts.length > 0 ? (
+          {loading ? (
+             <div className="flex items-center justify-center py-20">
+                <div className="w-10 h-10 border-4 border-cyan-100 border-t-cyan-500 rounded-full animate-spin"></div>
+             </div>
+          ) : filteredProducts.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-10">
               {filteredProducts.map((product, index) => (
                 <ScrollReveal key={product.id} direction="up" delay={index * 0.05}>
@@ -88,7 +107,7 @@ export default function ProductsPage() {
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute top-4 left-4 bg-cyan-600/90 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-md uppercase tracking-wider">
-                          {product.category}
+                          {product.categoryName}
                         </div>
                       </div>
 
@@ -99,7 +118,7 @@ export default function ProductsPage() {
                         </h3>
                         
                         {/* Rating */}
-                        <div className="flex items-center gap-1 mb-6">
+                        <div className="flex items-center gap-1 mb-2">
                           <i className="ri-star-fill text-yellow-400 text-sm"></i>
                           <span className="text-slate-400 text-xs font-semibold">{product.rating}</span>
                         </div>
@@ -110,17 +129,11 @@ export default function ProductsPage() {
                               <span className="text-sm mr-0.5">₹</span>
                               {product.price}
                             </div>
-                            {product.rcPrice && (
-                              <div className="bg-cyan-50 text-cyan-600 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 border border-cyan-100">
-                                <i className="ri-copper-coin-line"></i>
-                                {product.rcPrice} RC
-                              </div>
-                            )}
                           </div>
 
                           <button className="w-full bg-[linear-gradient(to_right,rgb(8,145,178),rgb(37,99,235))] text-white font-semibold py-4 rounded-xl flex items-center justify-center gap-2 hover:shadow-lg hover:brightness-110 transition-all active:scale-95">
-                            <i className="ri-shopping-cart-2-line"></i>
-                            Add to Cart
+                            Buy Now
+                            <i className="ri-arrow-right-line"></i>
                           </button>
                         </div>
                       </div>

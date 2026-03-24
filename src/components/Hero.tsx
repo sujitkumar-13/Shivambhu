@@ -1,4 +1,4 @@
-import water from "../assets/water.jpg"
+import water from "../assets/hero.png"
 import { ScrollReveal } from "./ScrollReveal"
 
 export const Hero = () => {
